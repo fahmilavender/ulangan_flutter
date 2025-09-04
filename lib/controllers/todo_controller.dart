@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 class TodoController extends GetxController {
+  
   var todos = <Map<String, dynamic>>[].obs;
 
   void addTodo(String title) {
