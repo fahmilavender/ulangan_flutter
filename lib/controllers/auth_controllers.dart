@@ -2,20 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
-  // TextEditingController untuk username & password
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // Reactive state
   var isLoading = false.obs;
   var isPasswordHidden = true.obs;
 
-  // Toggle visibility password
   void togglePasswordVisibility() {
     isPasswordHidden.toggle();
   }
 
-  // Login logic
   Future<bool> login() async {
     final username = usernameController.text.trim();
     final password = passwordController.text.trim();
@@ -27,7 +23,7 @@ class AuthController extends GetxController {
 
     try {
       isLoading.value = true;
-      await Future.delayed(const Duration(seconds: 2)); // Simulasi API
+      await Future.delayed(const Duration(seconds: 2));
 
       if (username == 'admin' && password == 'admin123') {
         Get.snackbar('Sukses', 'Login berhasil!');

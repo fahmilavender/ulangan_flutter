@@ -1,37 +1,28 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatefulWidget {
+class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.label,
     required this.controller,
     this.isPassword = false,
+    this.showToggle = false,
+    this.onToggle,
   });
 
   final String label;
   final TextEditingController controller;
   final bool isPassword;
-
-  @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
-}
-
-class _CustomTextFieldState extends State<CustomTextField> {
-  late bool _obscureText;
-
-  @override
-  void initState() {
-    super.initState();
-    _obscureText = widget.isPassword;
-  }
+  final bool showToggle;
+  final VoidCallback? onToggle;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: TextField(
-        controller: widget.controller,
-        obscureText: _obscureText,
+        controller: controller,
+        obscureText: isPassword,
         style: const TextStyle(
           color: Colors.black,
           fontSize: 16,
@@ -39,7 +30,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           fontWeight: FontWeight.w400,
         ),
         decoration: InputDecoration(
-          labelText: widget.label,
+          labelText: label,
           labelStyle: const TextStyle(
             color: Color(0xFFA9B0C5),
             fontSize: 16,
@@ -69,17 +60,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
               width: 1.5,
             ),
           ),
-          suffixIcon: widget.isPassword
+          suffixIcon: showToggle
               ? IconButton(
                   icon: Icon(
-                    _obscureText ? Icons.visibility_off : Icons.visibility,
+                    isPassword ? Icons.visibility_off : Icons.visibility,
                     color: Colors.grey,
                   ),
-                  onPressed: () {
-                    setState(() {
-                      _obscureText = !_obscureText;
-                    });
-                  },
+                  onPressed: onToggle,
                 )
               : null,
         ),
