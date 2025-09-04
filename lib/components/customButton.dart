@@ -29,8 +29,8 @@ class CustomButton extends StatelessWidget {
         child: Text(
           mytext,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            color: mytextcolor,
+          style: const TextStyle(
+            color: Colors.white,
             fontSize: 18,
             fontFamily: 'SF Pro Display',
             fontWeight: FontWeight.w500,
