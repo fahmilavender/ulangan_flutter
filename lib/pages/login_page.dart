@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulangan_flutter/components/customButton.dart';
-import 'package:ulangan_flutter/components/customTextField.dart';
+import 'package:ulangan_flutter/components/custom_button.dart';
+import 'package:ulangan_flutter/components/custom_textfield.dart';
 import 'package:ulangan_flutter/controllers/auth_controllers.dart';
 
 class LoginPage extends StatefulWidget {
@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           )
                         : CustomButton(
-                            mytext: "Login",
+                            myText: "Login",
                             onPressed: () async {
                               await authController.login();
                             },

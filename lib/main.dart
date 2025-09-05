@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: AppRoutes.loginPage,
+      initialRoute: AppRoutes.onboardingPage,
       getPages: AppPages.pages,
     );
   }
