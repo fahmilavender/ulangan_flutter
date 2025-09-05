@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.mytext,
+    required this.myText,
     required this.onPressed,
     this.mytextcolor = Colors.white,
   });
 
-  final String mytext;
+  final String myText;
   final Color mytextcolor;
   final VoidCallback onPressed;
 
@@ -27,7 +27,7 @@ class CustomButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
         ),
         child: Text(
-          mytext,
+          myText,
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: Colors.white,
