@@ -7,7 +7,7 @@ import 'package:ulangan_flutter/pages/profile_page.dart';
 class HomeController extends GetxController {
   var selectedIndex = 0.obs;
 
-    final List<Widget> pages = const [
+    final List<Widget> pages = [
     HomePage(),
     HistoryPage(),
     ProfilePage(),

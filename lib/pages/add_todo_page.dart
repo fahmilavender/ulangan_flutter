@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulangan_flutter/components/customButton.dart';
-import 'package:ulangan_flutter/components/customTextfield.dart';
+import 'package:ulangan_flutter/components/custom_button.dart';
+import 'package:ulangan_flutter/components/custom_textfield.dart';
 import 'package:ulangan_flutter/components/dropdowncustom.dart';
 import '../controllers/todo_controller.dart';
 
@@ -28,17 +28,11 @@ class AddTodoPage extends StatelessWidget {
           child: Column(
             children: [
               // Input Judul
-              CustomTextField(
-                controller: _titleController,
-                  label: "Judul",
-              ),
+              CustomTextField(controller: _titleController, label: "Judul"),
               const SizedBox(height: 16),
 
               // Input Deskripsi
-              CustomTextField(
-                controller: _descController,
-                  label: "Deskripsi",
-              ),
+              CustomTextField(controller: _descController, label: "Deskripsi"),
               const SizedBox(height: 16),
 
               // Dropdown Kategori
@@ -56,7 +50,7 @@ class AddTodoPage extends StatelessWidget {
 
               // Tombol Simpan
               CustomButton(
-                mytext: "Simpan",
+                myText: "Simpan",
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     todoController.addTodo(
@@ -67,7 +61,7 @@ class AddTodoPage extends StatelessWidget {
                     Get.back();
                   }
                 },
-              )
+              ),
             ],
           ),
         ),
