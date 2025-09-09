@@ -25,7 +25,6 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Logo
               Row(
                 children: [
                   CircleAvatar(
@@ -44,8 +43,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-
-              // Title
               const Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
@@ -64,8 +61,6 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
               ),
-
-              // Username
               Padding(
                 padding: const EdgeInsets.only(top: 30),
                 child: CustomTextField(
@@ -74,8 +69,6 @@ class _LoginPageState extends State<LoginPage> {
                   isPassword: false,
                 ),
               ),
-
-              // Password
               Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Obx(
@@ -88,15 +81,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
-              // Forgot Password
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      // forgot password action
                     },
                     child: const Text(
                       "Forgot Password?",
@@ -105,8 +95,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
-              // Login Button
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Obx(
@@ -122,8 +110,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
-              // Divider with "Or"
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Row(
@@ -137,9 +123,6 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-
-              // Google Login
-             // Google Login
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size(double.infinity, 48),
@@ -153,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/images/google_logo.png', // pastikan file ada di folder assets
+                        'assets/images/google_logo.png',
                         height: 28,
                         width: 28,
                       ),
@@ -165,8 +148,6 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-
-              // Facebook Login
               Padding(
                 padding: const EdgeInsets.only(top: 12),
                 child: OutlinedButton.icon(
