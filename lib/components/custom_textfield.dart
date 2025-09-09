@@ -19,56 +19,59 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: TextField(
-        controller: controller,
-        obscureText: isPassword,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 16,
-          fontFamily: 'SF Pro Display',
-          fontWeight: FontWeight.w400,
-        ),
-        decoration: InputDecoration(
-          labelText: label,
-          labelStyle: const TextStyle(
-            color: Color(0xFFA9B0C5),
-            fontSize: 16,
-            fontFamily: 'SF Pro Display',
+      padding: const EdgeInsets.symmetric(vertical: 6), // lebih compact
+      child: SizedBox(
+        height: 48, // tinggi field lebih pas
+        child: TextField(
+          controller: controller,
+          obscureText: isPassword,
+          style: const TextStyle(
+            color: Colors.black87,
+            fontSize: 15,
             fontWeight: FontWeight.w400,
           ),
-          filled: true,
-          fillColor: const Color(0xFFF6F7F9),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
-            borderSide: const BorderSide(
-              color: Color(0xFFE0E5ED),
-              width: 1,
+          decoration: InputDecoration(
+            labelText: label,
+            labelStyle: const TextStyle(
+              color: Color(0xFFA9B0C5),
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
             ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
-            borderSide: const BorderSide(
-              color: Color(0xFFE0E5ED),
-              width: 1,
+            filled: true,
+            fillColor: const Color(0xFFF6F7F9),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                color: Color(0xFFE0E5ED),
+                width: 1,
+              ),
             ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
-            borderSide: const BorderSide(
-              color: Color(0xFF24A19C),
-              width: 1.5,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                color: Color(0xFFE0E5ED),
+                width: 1,
+              ),
             ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                color: Color(0xFF24A19C),
+                width: 1.5,
+              ),
+            ),
+            suffixIcon: showToggle
+                ? IconButton(
+                    icon: Icon(
+                      isPassword ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.grey[600],
+                      size: 20, // lebih kecil
+                    ),
+                    onPressed: onToggle,
+                  )
+                : null,
           ),
-          suffixIcon: showToggle
-              ? IconButton(
-                  icon: Icon(
-                    isPassword ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.grey,
-                  ),
-                  onPressed: onToggle,
-                )
-              : null,
         ),
       ),
     );
