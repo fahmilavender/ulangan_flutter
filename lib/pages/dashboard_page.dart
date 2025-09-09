@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan_flutter/controllers/home_controller.dart';
-import 'profile_page.dart';
 
 class DashboardPage extends StatelessWidget {
   DashboardPage({super.key});

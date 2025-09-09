@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan_flutter/components/customFABbutton.dart';
+import 'package:ulangan_flutter/routes/routes.dart';
 import '../controllers/todo_controller.dart';
-import 'add_todo_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
         );
       }),
       floatingActionButton: CustomFabButton(
-        onPressed: () => Get.to(() => AddTodoPage()),
+        onPressed: () => Get.toNamed(AppRoutes.addTodo),
       ),
     );
   }
