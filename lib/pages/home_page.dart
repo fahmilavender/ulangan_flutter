@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
           return const Center(child: Text("Belum ada Kegiatan"));
         }
 
+
         return ListView.builder(
           itemCount: todoController.todos.length,
           itemBuilder: (context, index) {
