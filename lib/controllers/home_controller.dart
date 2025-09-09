@@ -1,9 +1,20 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulangan_flutter/pages/history_page.dart';
+import 'package:ulangan_flutter/pages/home_page.dart';
+import 'package:ulangan_flutter/pages/profile_page.dart';
 
 class HomeController extends GetxController {
-  var currentIndex = 0.obs;
+  var selectedIndex = 0.obs;
 
-  void changeIndex(int index) {
-    currentIndex.value = index;
+    final List<Widget> pages = const [
+    HomePage(),
+    HistoryPage(),
+    ProfilePage(),
+  ];
+
+  void changePage(int index) {
+    selectedIndex.value = index;
   }
 }
+  
