@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.myText,
-    required this.onPressed,
+    this.myText,
+    this.onPressed,
     this.mytextcolor = Colors.white,
+    this.backgroundColor = const Color(0xFF24A19C),
+    this.isLoading = false,
   });
 
-  final String myText;
+  final String? myText;
   final Color mytextcolor;
-  final VoidCallback onPressed;
+  final Color backgroundColor;
+  final VoidCallback? onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -18,25 +22,35 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: isLoading ? null : onPressed, // disable saat loading
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF24A19C),
+          backgroundColor: backgroundColor,
+          elevation: 4,
+          shadowColor: backgroundColor.withOpacity(0.4),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 20),
         ),
-        child: Text(
-          myText,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontFamily: 'SF Pro Display',
-            fontWeight: FontWeight.w500,
-            height: 1.11,
-          ),
-        ),
+        child: isLoading
+            ? const SizedBox(
+                width: 22,
+                height: 22,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 2.5,
+                ),
+              )
+            : Text(
+                myText ?? "",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: mytextcolor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.5,
+                ),
+              ),
       ),
     );
   }
