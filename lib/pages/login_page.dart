@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ulangan_flutter/components/custom_button.dart';
 import 'package:ulangan_flutter/components/custom_textfield.dart';
 import 'package:ulangan_flutter/controllers/auth_controllers.dart';
+import 'package:ulangan_flutter/routes/routes.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -33,12 +34,14 @@ class _LoginPageState extends State<LoginPage> {
               const Text("Please fill username and password below"),
               const SizedBox(height: 30),
 
+              // Username
               CustomTextField(
                 label: "Username",
                 controller: authController.usernameController,
                 isPassword: false,
               ),
 
+              // Password
               Obx(() => CustomTextField(
                     label: "Password",
                     controller: authController.passwordController,
@@ -46,8 +49,10 @@ class _LoginPageState extends State<LoginPage> {
                     showToggle: true,
                     onToggle: authController.togglePasswordVisibility,
                   )),
+
               const SizedBox(height: 30),
 
+              // Button / Loading
               Obx(() => SizedBox(
                     width: double.infinity,
                     child: authController.isLoading.value
@@ -64,7 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                         : CustomButton(
                             myText: "Login",
                             onPressed: () async {
-                              await authController.login();
+                              final success = await authController.login();
+                              if (success) {
+                                Get.offAllNamed(AppRoutes.dashboardPage);
+                              }
                             },
                           ),
                   )),
