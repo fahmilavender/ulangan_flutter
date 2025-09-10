@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:ulangan_flutter/pages/add_todo_page.dart';
 import 'package:ulangan_flutter/pages/dashboard_page.dart';
+import 'package:ulangan_flutter/pages/history_page.dart';
 import 'package:ulangan_flutter/pages/home_page.dart';
 import 'package:ulangan_flutter/pages/login_page.dart';
 import 'package:ulangan_flutter/routes/routes.dart';
@@ -22,6 +23,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.addTodo,
       page: () => AddTodoPage(),
+    ),
+    GetPage(
+      name: AppRoutes.historyPage,
+      page: () => HistoryPage(),
     ),
     ];
 }
