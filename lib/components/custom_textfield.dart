@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.showToggle = false,
     this.onToggle,
+    this.validator,
   });
 
   final String label;
@@ -15,16 +16,18 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final bool showToggle;
   final VoidCallback? onToggle;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6), // lebih compact
+      padding: const EdgeInsets.symmetric(vertical: 6),
       child: SizedBox(
-        height: 48, // tinggi field lebih pas
-        child: TextField(
+        height: 64,
+        child: TextFormField( 
           controller: controller,
           obscureText: isPassword,
+          validator: validator,
           style: const TextStyle(
             color: Colors.black87,
             fontSize: 15,
@@ -66,7 +69,7 @@ class CustomTextField extends StatelessWidget {
                     icon: Icon(
                       isPassword ? Icons.visibility_off : Icons.visibility,
                       color: Colors.grey[600],
-                      size: 20, // lebih kecil
+                      size: 20,
                     ),
                     onPressed: onToggle,
                   )

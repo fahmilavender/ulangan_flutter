@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ulangan_flutter/components/customFABbutton.dart';
-import 'package:ulangan_flutter/routes/routes.dart';
+import 'package:ulangan_flutter/components/todocardwidget.dart';
 import '../controllers/todo_controller.dart';
+import '../routes/routes.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -12,40 +12,83 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Todo List")),
-      body: Obx(() {
-        if (todoController.todos.isEmpty) {
-          return const Center(child: Text("Belum ada Kegiatan"));
-        }
-
-        return ListView.builder(
-          itemCount: todoController.todos.length,
-          itemBuilder: (context, index) {
-            final todo = todoController.todos[index];
-            return ListTile(
-              leading: Checkbox(
-                value: todo.isDone,
-                onChanged: (_) => todoController.toggleDone(todo.id),
+      backgroundColor: Colors.grey[100],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 48, left: 20, right: 20, bottom: 24),
+            decoration: const BoxDecoration(
+              color: Color(0xFF3D5AFE),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(28),
+                bottomRight: Radius.circular(28),
               ),
-              title: Text(
-                todo.title,
-                style: TextStyle(
-                  decoration: todo.isDone
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text("Today", style: TextStyle(color: Colors.white70)),
+                    SizedBox(height: 4),
+                    Text(
+                      "5 May",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              subtitle: Text("${todo.category} • ${todo.description}"),
-              trailing: IconButton(
-                icon: const Icon(Icons.delete, color: Colors.red),
-                onPressed: () => todoController.deleteTodo(todo.id),
-              ),
-            );
-          },
-        );
-      }),
-      floatingActionButton: CustomFabButton(
-        onPressed: () => Get.toNamed(AppRoutes.addTodo),
+                ElevatedButton(
+                  onPressed: () => Get.toNamed(AppRoutes.addTodo),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.blueAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text("Add New"),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          Expanded(
+            child: Obx(() {
+              final activeTodos = todoController.todos.where((t) => !t.isDone).toList();
+
+              if (activeTodos.isEmpty) {
+                return const Center(child: Text("Belum ada kegiatan"));
+              }
+              return ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: activeTodos.length,
+                itemBuilder: (context, index) {
+                  final todo = activeTodos[index];
+                  return TodoCardWidget(
+                    title: todo.title,
+                    project: todo.category,
+                    date: todo.date,
+                    time: (todo.startTime != null && todo.endTime != null)
+                        ? "${todo.startTime} - ${todo.endTime}"
+                        : null,
+                    isDone: todo.isDone,
+                    isActive: todo.id == todoController.activeTaskId.value,
+                    onToggleDone: () {
+                      todoController.toggleDone(todo.id);
+                    },
+                    onDelete: () => todoController.deleteTodo(todo.id),
+                  );
+                },
+              );
+            }),
+          ),
+        ],
       ),
     );
   }
