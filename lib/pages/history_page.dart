@@ -11,7 +11,7 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F7FF), // ✅ bg soft biar beda
+      backgroundColor: const Color(0xFFF8F7FF),
       appBar: AppBar(
         title: const Text("History"),
         backgroundColor: const Color(0xFF3D5AFE),

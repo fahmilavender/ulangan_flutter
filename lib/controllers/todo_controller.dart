@@ -2,34 +2,31 @@ import 'package:get/get.dart';
 import '../models/todo_model.dart';
 
 class TodoController extends GetxController {
-  final todos = <Todo>[].obs;
-  var activeTaskId = Rxn<int>();
+  final RxList<Todo> todos = <Todo>[].obs;
+  final RxnInt activeTaskId = RxnInt();
 
-  void addTodo(
-    String title,
-    String category, {
+  int _generateId() => DateTime.now().millisecondsSinceEpoch;
+  int _findIndexById(int id) => todos.indexWhere((t) => t.id == id);
+
+  void addTodo(String title, String category, {
     String date = "Today",
     String? startTime,
     String? endTime,
   }) {
-    final id = DateTime.now().millisecondsSinceEpoch;
-    todos.add(
-      Todo(
-        id: id,
-        title: title,
-        category: category,
-        date: date,
-        startTime: startTime,
-        endTime: endTime,
-      ),
-    );
+    todos.add(Todo(
+      id: _generateId(),
+      title: title,
+      category: category,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+    ));
   }
 
   void toggleDone(int id) {
-    final index = todos.indexWhere((t) => t.id == id);
+    final index = _findIndexById(id);
     if (index != -1) {
       todos[index] = todos[index].copyWith(isDone: !todos[index].isDone);
-      todos.refresh();
     }
   }
 
@@ -37,15 +34,12 @@ class TodoController extends GetxController {
     todos.removeWhere((t) => t.id == id);
   }
 
-  void editTodo(
-    int id,
-    String newTitle,
-    String newCategory, {
+  void editTodo(int id, String newTitle, String newCategory, {
     String? newDate,
     String? newStartTime,
     String? newEndTime,
   }) {
-    final index = todos.indexWhere((t) => t.id == id);
+    final index = _findIndexById(id);
     if (index != -1) {
       todos[index] = todos[index].copyWith(
         title: newTitle,
@@ -54,11 +48,15 @@ class TodoController extends GetxController {
         startTime: newStartTime ?? todos[index].startTime,
         endTime: newEndTime ?? todos[index].endTime,
       );
-      todos.refresh();
     }
   }
 
   void setActive(int id) {
     activeTaskId.value = id;
   }
+
+  // Utilities
+  List<Todo> get completedTodos => todos.where((t) => t.isDone).toList();
+  List<Todo> get activeTodos => todos.where((t) => !t.isDone).toList();
+  Todo? get activeTask => todos.firstWhereOrNull((t) => t.id == activeTaskId.value);
 }
