@@ -33,13 +33,15 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text("Today", style: TextStyle(color: Customcolors.textSecondary)),
-                    SizedBox(height: 4),
-                    Text(
-                      "5 May",
-                      style: TextStyle(
-                        color: Customcolors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: EdgeInsets.only(top: 4), // ganti SizedBox
+                      child: Text(
+                        "5 May",
+                        style: TextStyle(
+                          color: Customcolors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
@@ -58,7 +60,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 20),
+          const Padding(
+            padding: EdgeInsets.only(top: 20),
+          ),
           Expanded(
             child: Obx(() {
               final activeTodos = todoController.todos.where((t) => !t.isDone).toList();

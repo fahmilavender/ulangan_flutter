@@ -55,7 +55,6 @@ class TodoController extends GetxController {
     activeTaskId.value = id;
   }
 
-  // Utilities
   List<Todo> get completedTodos => todos.where((t) => t.isDone).toList();
   List<Todo> get activeTodos => todos.where((t) => !t.isDone).toList();
   Todo? get activeTask => todos.firstWhereOrNull((t) => t.id == activeTaskId.value);
