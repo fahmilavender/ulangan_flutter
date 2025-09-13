@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     this.myText,
     this.onPressed,
-    this.mytextcolor = Colors.white,
-    this.backgroundColor = const Color(0xFF24A19C),
+    this.mytextcolor = Customcolors.background,
+    this.backgroundColor = Customcolors.buttonlogin,
     this.isLoading = false,
   });
 
@@ -22,7 +23,7 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: ElevatedButton(
-        onPressed: isLoading ? null : onPressed, // disable saat loading
+        onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           elevation: 4,
@@ -37,7 +38,7 @@ class CustomButton extends StatelessWidget {
                 width: 22,
                 height: 22,
                 child: CircularProgressIndicator(
-                  color: Colors.white,
+                  color: Customcolors.background,
                   strokeWidth: 2.5,
                 ),
               )

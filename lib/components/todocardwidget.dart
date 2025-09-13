@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 
 class TodoCardWidget extends StatefulWidget {
   final String title;
@@ -76,7 +77,7 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
               child: Text(
                 widget.statusLabel!,
                 style: const TextStyle(
-                  color: Colors.blueGrey,
+                  color: Customcolors.bluegrey,
                   fontWeight: FontWeight.bold,
                   fontSize: 11,
                   letterSpacing: 1.3,
@@ -89,7 +90,7 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
             margin: const EdgeInsets.only(bottom: 18),
             padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
             decoration: BoxDecoration(
-              color: widget.isActive ? const Color(0xFF3D5AFE) : Colors.white,
+              color: widget.isActive ? Customcolors.bluewidget : Customcolors.background,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
@@ -113,10 +114,10 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
                       border: Border.all(
-                        color: _isDoneLocal ? const Color(0xFF3D5AFE) : Colors.grey,
+                        color: _isDoneLocal ? Customcolors.bluewidget : Customcolors.textSecondary,
                         width: 2,
                       ),
-                      color: _isDoneLocal ? const Color(0xFF3D5AFE) : Colors.transparent,
+                      color: _isDoneLocal ? Customcolors.bluewidget : Customcolors.transparant,
                     ),
                     child: AnimatedOpacity(
                       duration: const Duration(milliseconds: 200),
@@ -124,7 +125,7 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                       child: const Icon(
                         Icons.check,
                         size: 16,
-                        color: Colors.white,
+                        color: Customcolors.background,
                       ),
                     ),
                   ),
@@ -137,7 +138,7 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                       Text(
                         widget.title,
                         style: TextStyle(
-                          color: widget.isActive ? Colors.white : Colors.black,
+                          color: widget.isActive ? Customcolors.background : Customcolors.black,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           decoration: _isDoneLocal ? TextDecoration.lineThrough : null,
@@ -153,24 +154,24 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                                 avatar: Icon(
                                   projectIcons[widget.project] ?? Icons.folder,
                                   size: 16,
-                                  color: const Color(0xFF3D5AFE),
+                                  color: Customcolors.bluewidget,
                                 ),
                                 label: Text(
                                   widget.project!,
                                   style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                                 ),
-                                backgroundColor: const Color(0xFFE8EAF6),
+                                backgroundColor: Customcolors.grey300,
                                 visualDensity: VisualDensity.compact,
                                 padding: EdgeInsets.zero,
                               ),
                             if (widget.date != null)
                               Chip(
-                                avatar: const Icon(Icons.calendar_today, size: 16, color: Colors.green),
+                                avatar: const Icon(Icons.calendar_today, size: 16, color: Customcolors.green),
                                 label: Text(
                                   widget.date!,
                                   style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                                 ),
-                                backgroundColor: Colors.green.shade50,
+                                backgroundColor: Customcolors.green50,
                                 visualDensity: VisualDensity.compact,
                                 padding: EdgeInsets.zero,
                               ),
@@ -181,7 +182,7 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                         Text(
                           widget.time!,
                           style: TextStyle(
-                            color: widget.isActive ? Colors.white70 : Colors.grey[600],
+                            color: widget.isActive ? Customcolors.grey300 : Customcolors.grey600,
                             fontSize: 12,
                           ),
                         ),
@@ -192,7 +193,7 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                 if (widget.showDelete && widget.onDelete != null) ...[
                   const SizedBox(width: 8),
                   IconButton(
-                    icon: Icon(Icons.delete, color: widget.isActive ? Colors.white : Colors.redAccent),
+                    icon: Icon(Icons.delete, color: widget.isActive ? Customcolors.background : Customcolors.redAccent),
                     onPressed: widget.onDelete,
                   ),
                 ],

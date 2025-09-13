@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 
 class CustomFabButton extends StatelessWidget {
   const CustomFabButton({
     super.key,
     required this.onPressed,
-    this.backgroundColor = const Color(0xFF24A19C),
+    this.backgroundColor = Customcolors.buttonlogin,
     this.icon = Icons.add,
-    this.iconColor = Colors.white,
+    this.iconColor = Customcolors.background,
     this.size = 56.0,
   });
 

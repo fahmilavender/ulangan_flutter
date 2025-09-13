@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 import 'package:ulangan_flutter/components/todocardwidget.dart';
 import '../controllers/todo_controller.dart';
 import '../routes/routes.dart';
@@ -12,14 +13,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Customcolors.bghome,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             padding: const EdgeInsets.only(top: 48, left: 20, right: 20, bottom: 24),
             decoration: const BoxDecoration(
-              color: Color(0xFF3D5AFE),
+              color: Customcolors.bluecontainer,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(28),
                 bottomRight: Radius.circular(28),
@@ -31,12 +32,12 @@ class HomePage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
-                    Text("Today", style: TextStyle(color: Colors.white70)),
+                    Text("Today", style: TextStyle(color: Customcolors.textSecondary)),
                     SizedBox(height: 4),
                     Text(
                       "5 May",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Customcolors.white,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
@@ -46,8 +47,8 @@ class HomePage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () => Get.toNamed(AppRoutes.addTodo),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.blueAccent,
+                    backgroundColor: Customcolors.background,
+                    foregroundColor: Customcolors.blueaksen,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),

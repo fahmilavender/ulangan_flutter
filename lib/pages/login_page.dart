@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan_flutter/components/custom_button.dart';
 import 'package:ulangan_flutter/components/custom_textfield.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 import 'package:ulangan_flutter/controllers/auth_controllers.dart';
 import 'package:ulangan_flutter/routes/routes.dart';
 
@@ -18,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Customcolors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 25),
@@ -28,9 +29,9 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 children: [
                   CircleAvatar(
-                    backgroundColor: const Color(0xFF24A19C),
+                    backgroundColor: Customcolors.primary,
                     radius: 20,
-                    child: const Icon(Icons.check_box, color: Colors.white, size: 20),
+                    child: const Icon(Icons.check_box, color: Customcolors.white, size: 20),
                   ),
                   const Padding(padding: EdgeInsets.only(left: 8)),
                   const Text(
@@ -38,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF24A19C),
+                      color: Customcolors.primary,
                     ),
                   ),
                 ],
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: Customcolors.textPrimary,
                   ),
                 ),
               ),
@@ -58,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: EdgeInsets.only(top: 8),
                 child: Text(
                   "Enter your username and password to log in",
-                  style: TextStyle(fontSize: 14, color: Colors.grey),
+                  style: TextStyle(fontSize: 14, color: Customcolors.textSecondary),
                 ),
               ),
               Padding(
@@ -86,11 +87,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                     child: const Text(
                       "Forgot Password?",
-                      style: TextStyle(color: Color(0xFF24A19C)),
+                      style: TextStyle(color: Customcolors.primaryLight),
                     ),
                   ),
                 ),
@@ -113,56 +113,56 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Row(
-                  children: const [
-                    Expanded(child: Divider(thickness: 1, color: Colors.grey)),
-                    Padding(
+                  children: [
+                    Expanded(child: Divider(thickness: 1, color: Customcolors.divider)),
+                    const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text("Or"),
                     ),
-                    Expanded(child: Divider(thickness: 1, color: Colors.grey)),
+                    Expanded(child: Divider(thickness: 1, color: Customcolors.divider)),
                   ],
                 ),
               ),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 48),
-                    side: const BorderSide(color: Colors.grey),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/google_logo.png',
-                        height: 28,
-                        width: 28,
-                      ),
-                      const SizedBox(width: 10),
-                      const Text(
-                        "Continue with Google",
-                        style: TextStyle(color: Colors.black87, fontSize: 15),
-                      ),
-                    ],
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 48),
+                  side: BorderSide(color: Customcolors.divider),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/google_logo.png',
+                      height: 28,
+                      width: 28,
+                    ),
+                    const Padding(padding: EdgeInsets.only(left: 10)),
+                    const Text(
+                      "Continue with Google",
+                      style: TextStyle(color: Customcolors.textPrimary, fontSize: 15),
+                    ),
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 12),
                 child: OutlinedButton.icon(
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size(double.infinity, 48),
-                    side: const BorderSide(color: Colors.grey),
+                    side: BorderSide(color: Customcolors.divider),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   onPressed: () {},
-                  icon: const Icon(Icons.facebook, color: Colors.blue),
+                  icon: const Icon(Icons.facebook, color: Customcolors.facebook),
                   label: const Text(
                     "Continue with Facebook",
-                    style: TextStyle(color: Colors.black87, fontSize: 15),
+                    style: TextStyle(color: Customcolors.textPrimary, fontSize: 15),
                   ),
                 ),
               ),
