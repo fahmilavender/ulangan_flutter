@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -24,43 +25,46 @@ class CustomTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: SizedBox(
         height: 64,
-        child: TextFormField( 
+        child: TextFormField(
           controller: controller,
           obscureText: isPassword,
           validator: validator,
           style: const TextStyle(
-            color: Colors.black87,
+            color: Customcolors.textPrimary,
             fontSize: 15,
             fontWeight: FontWeight.w400,
           ),
           decoration: InputDecoration(
             labelText: label,
             labelStyle: const TextStyle(
-              color: Color(0xFFA9B0C5),
+              color: Customcolors.textFieldLabel,
               fontSize: 15,
               fontWeight: FontWeight.w400,
             ),
             filled: true,
-            fillColor: const Color(0xFFF6F7F9),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+            fillColor: Customcolors.textFieldFill,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 0,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Color(0xFFE0E5ED),
+                color: Customcolors.textFieldBorder,
                 width: 1,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Color(0xFFE0E5ED),
+                color: Customcolors.textFieldBorder,
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Color(0xFF24A19C),
+                color: Customcolors.primary,
                 width: 1.5,
               ),
             ),
@@ -68,7 +72,7 @@ class CustomTextField extends StatelessWidget {
                 ? IconButton(
                     icon: Icon(
                       isPassword ? Icons.visibility_off : Icons.visibility,
-                      color: Colors.grey[600],
+                      color: Customcolors.grey600,
                       size: 20,
                     ),
                     onPressed: onToggle,

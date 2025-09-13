@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 import 'package:ulangan_flutter/components/todocardwidget.dart';
 import '../controllers/todo_controller.dart';
 
@@ -11,11 +12,11 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F7FF),
+      backgroundColor: Customcolors.background,
       appBar: AppBar(
         title: const Text("History"),
-        backgroundColor: const Color(0xFF3D5AFE),
-        foregroundColor: Colors.white,
+        backgroundColor: Customcolors.bluecontainer,
+        foregroundColor: Customcolors.background,
         elevation: 0,
       ),
       body: Obx(() {
@@ -25,7 +26,7 @@ class HistoryPage extends StatelessWidget {
           return const Center(
             child: Text(
               "Belum ada todo yang selesai.",
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              style: TextStyle(fontSize: 16, color: Customcolors.textSecondary),
             ),
           );
         }
