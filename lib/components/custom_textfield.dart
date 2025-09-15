@@ -10,6 +10,11 @@ class CustomTextField extends StatelessWidget {
     this.showToggle = false,
     this.onToggle,
     this.validator,
+    this.labelColor,
+    this.textColor,
+    this.fillColor,
+    this.borderColor,
+    this.focusedBorderColor,
   });
 
   final String label;
@@ -18,6 +23,13 @@ class CustomTextField extends StatelessWidget {
   final bool showToggle;
   final VoidCallback? onToggle;
   final String? Function(String?)? validator;
+
+  // Warna kustom opsional
+  final Color? labelColor;
+  final Color? textColor;
+  final Color? fillColor;
+  final Color? borderColor;
+  final Color? focusedBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -29,42 +41,42 @@ class CustomTextField extends StatelessWidget {
           controller: controller,
           obscureText: isPassword,
           validator: validator,
-          style: const TextStyle(
-            color: Customcolors.textPrimary,
+          style: TextStyle(
+            color: textColor ?? Customcolors.textPrimary,
             fontSize: 15,
             fontWeight: FontWeight.w400,
           ),
           decoration: InputDecoration(
             labelText: label,
-            labelStyle: const TextStyle(
-              color: Customcolors.textFieldLabel,
+            labelStyle: TextStyle(
+              color: labelColor ?? Customcolors.textFieldLabel,
               fontSize: 15,
               fontWeight: FontWeight.w400,
             ),
             filled: true,
-            fillColor: Customcolors.textFieldFill,
+            fillColor: fillColor ?? Customcolors.textFieldFill,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 12,
               vertical: 0,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: Customcolors.textFieldBorder,
+              borderSide: BorderSide(
+                color: borderColor ?? Customcolors.textFieldBorder,
                 width: 1,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: Customcolors.textFieldBorder,
+              borderSide: BorderSide(
+                color: borderColor ?? Customcolors.textFieldBorder,
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: Customcolors.primary,
+              borderSide: BorderSide(
+                color: focusedBorderColor ?? Customcolors.primary,
                 width: 1.5,
               ),
             ),
