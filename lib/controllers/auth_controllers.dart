@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulangan_flutter/routes/routes.dart';
 
 class AuthController extends GetxController {
   final usernameController = TextEditingController();
@@ -12,29 +13,26 @@ class AuthController extends GetxController {
     isPasswordHidden.toggle();
   }
 
-  Future<bool> login() async {
+  void login() async {
     final username = usernameController.text.trim();
     final password = passwordController.text.trim();
 
     if (username.isEmpty || password.isEmpty) {
       Get.snackbar('Error', 'Username dan password tidak boleh kosong.');
-      return false;
+      return;
     }
 
-    try {
-      isLoading.value = true;
-      await Future.delayed(const Duration(seconds: 2));
+    isLoading.value = true;
+    await Future.delayed(const Duration(seconds: 2));
 
-      if (username == 'admin' && password == 'admin123') {
-        Get.snackbar('Sukses', 'Login berhasil!');
-        return true;
-      } else {
-        Get.snackbar('Login Gagal', 'Username atau Password Salah');
-        return false;
-      }
-    } finally {
-      isLoading.value = false;
+    if (username == 'admin' && password == 'admin123') {
+      Get.snackbar('Sukses', 'Login berhasil!');
+      Get.offAllNamed(AppRoutes.dashboardPage);
+    } else {
+      Get.snackbar('Login Gagal', 'Username atau Password Salah');
     }
+
+    isLoading.value = false;
   }
 
   @override
