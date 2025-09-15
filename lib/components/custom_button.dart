@@ -12,8 +12,8 @@ class CustomButton extends StatelessWidget {
   });
 
   final String? myText;
-  final Color? myTextColor;       // bisa dikustom dari halaman
-  final Color? backgroundColor;   // bisa dikustom dari halaman
+  final Color? myTextColor;      
+  final Color? backgroundColor;  
   final VoidCallback? onPressed;
   final bool isLoading;
 
