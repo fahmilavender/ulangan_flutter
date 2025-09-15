@@ -4,7 +4,6 @@ import 'package:ulangan_flutter/components/custom_button.dart';
 import 'package:ulangan_flutter/components/custom_textfield.dart';
 import 'package:ulangan_flutter/components/customcolors.dart';
 import 'package:ulangan_flutter/controllers/auth_controllers.dart';
-import 'package:ulangan_flutter/routes/routes.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -34,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: const Icon(Icons.check_box,
                         color: Customcolors.white, size: 20),
                   ),
-                  const Padding(padding: EdgeInsets.only(left: 8)),
+                  const SizedBox(width: 8),
                   const Text(
                     "TodyApp",
                     style: TextStyle(
@@ -45,7 +44,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-
               const Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
@@ -57,15 +55,16 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
               const Padding(
                 padding: EdgeInsets.only(top: 6),
                 child: Text(
                   "Enter your username and password to log in",
-                  style: TextStyle(fontSize: 14, color: Customcolors.textSecondary),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Customcolors.textSecondary,
+                  ),
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: CustomTextField(
@@ -75,7 +74,6 @@ class _LoginPageState extends State<LoginPage> {
                   focusedBorderColor: Customcolors.bluewidget,
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 12),
                 child: Obx(
@@ -89,9 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
               Padding(
-                padding: const EdgeInsets.only(top: 0.5),
+                padding: const EdgeInsets.only(top: 4),
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
@@ -103,19 +100,13 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-
               Padding(
-                padding: const EdgeInsets.only(top: 8), 
+                padding: const EdgeInsets.only(top: 12),
                 child: Obx(
                   () => CustomButton(
                     myText: "Log In",
                     isLoading: authController.isLoading.value,
-                    onPressed: () async {
-                      authController.isLoading.value = true;
-                      final success = await authController.login();
-                      authController.isLoading.value = false;
-                      if (success) Get.offAllNamed(AppRoutes.dashboardPage);
-                    },
+                    onPressed: authController.login,
                     myTextColor: Customcolors.white,
                     backgroundColor: Customcolors.bluewidget,
                   ),
