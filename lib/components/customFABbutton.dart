@@ -19,18 +19,21 @@ class CustomFabButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor,
-          shape: const CircleBorder(),
-          padding: EdgeInsets.zero,
-          elevation: 4,
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: onPressed,
+      child: Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          shape: BoxShape.circle,
         ),
-        child: Icon(icon, color: iconColor),
+        alignment: Alignment.center,
+        child: Icon(
+          icon,
+          color: iconColor,
+        ),
       ),
     );
   }

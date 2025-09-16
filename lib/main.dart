@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan_flutter/bindings/auth_binding.dart';
 import 'package:ulangan_flutter/routes/pages.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:ulangan_flutter/routes/routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null);
   runApp(const MyApp());
 }
 
