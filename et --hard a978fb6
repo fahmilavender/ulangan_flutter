@@ -1,0 +1,79 @@
+[33m2db5c37[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix/todo-ui[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33m2db5c37[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix/todo-ui[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{1}: reset: moving to HEAD
+[33m2db5c37[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix/todo-ui[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{2}: checkout: moving from main to fix/todo-ui
+[33m2db5c37[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix/todo-ui[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{3}: reset: moving to origin/main
+[33m2db5c37[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix/todo-ui[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{4}: checkout: moving from fix/todo-ui to main
+[33m2db5c37[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix/todo-ui[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{5}: checkout: moving from main to fix/todo-ui
+[33m2db5c37[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix/todo-ui[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{6}: pull origin: Fast-forward
+[33ma978fb6[m HEAD@{7}: checkout: moving from fix/auth_controller to main
+[33mb88f31b[m[33m ([m[1;31morigin/fix/auth_controller[m[33m, [m[1;32mfix/auth_controller[m[33m)[m HEAD@{8}: commit: remove future
+[33ma978fb6[m HEAD@{9}: merge origin/main: Fast-forward
+[33m383cab8[m HEAD@{10}: checkout: moving from main to fix/auth_controller
+[33ma978fb6[m HEAD@{11}: pull origin main: Fast-forward
+[33m383cab8[m HEAD@{12}: checkout: moving from fix/auth_controller to main
+[33m383cab8[m HEAD@{13}: reset: moving to HEAD
+[33m383cab8[m HEAD@{14}: checkout: moving from main to fix/auth_controller
+[33m383cab8[m HEAD@{15}: checkout: moving from fix-style/login-page to main
+[33m7dbcd4f[m[33m ([m[1;31morigin/fix-style/login-page[m[33m, [m[1;32mfix-style/login-page[m[33m)[m HEAD@{16}: commit: fix style login page
+[33m383cab8[m HEAD@{17}: merge origin/main: Fast-forward
+[33mecde571[m HEAD@{18}: checkout: moving from main to fix-style/login-page
+[33m383cab8[m HEAD@{19}: pull origin main: Fast-forward
+[33mecde571[m HEAD@{20}: checkout: moving from fix/reusable-component-custombutton-&-customtextfield to main
+[33m08c99ac[m[33m ([m[1;31morigin/fix/reusable-component-custombutton-&-customtextfield[m[33m, [m[1;32mfix/reusable-component-custombutton-&-customtextfield[m[33m)[m HEAD@{21}: commit: fix style reusable component custombutton & customtextfield
+[33mecde571[m HEAD@{22}: checkout: moving from main to fix/reusable-component-custombutton-&-customtextfield
+[33mecde571[m HEAD@{23}: checkout: moving from fix-style/login-page to main
+[33mecde571[m HEAD@{24}: reset: moving to HEAD
+[33mecde571[m HEAD@{25}: merge origin/main: Fast-forward
+[33mce0133e[m HEAD@{26}: checkout: moving from main to fix-style/login-page
+[33mecde571[m HEAD@{27}: pull origin main: Fast-forward
+[33m95c2c85[m HEAD@{28}: checkout: moving from style/todo-ui to main
+[33m7cc9cd6[m[33m ([m[1;32mstyle/todo-ui[m[33m)[m HEAD@{29}: commit: check
+[33mf606322[m[33m ([m[1;31morigin/style/todo-ui[m[33m)[m HEAD@{30}: commit: feat: improve todo UI (spacing, close button, category style)
+[33mdbf77a2[m HEAD@{31}: merge origin/main: Fast-forward
+[33m95c2c85[m HEAD@{32}: checkout: moving from main to style/todo-ui
+[33m95c2c85[m HEAD@{33}: checkout: moving from fix-style/login-page to main
+[33mce0133e[m HEAD@{34}: commit: style login ui
+[33m3aa40a5[m HEAD@{35}: reset: moving to origin/fix-style/login-page
+[33m3aa40a5[m HEAD@{36}: reset: moving to origin/fix-style/login-page
+[33m3aa40a5[m HEAD@{37}: checkout: moving from style/todo-ui to fix-style/login-page
+[33m95c2c85[m HEAD@{38}: reset: moving to HEAD
+[33m95c2c85[m HEAD@{39}: checkout: moving from main to style/todo-ui
+[33m95c2c85[m HEAD@{40}: pull origin main: Fast-forward
+[33m6bbae4b[m HEAD@{41}: checkout: moving from fix-style/login-page to main
+[33m3aa40a5[m HEAD@{42}: commit: fix-style login page
+[33m6bbae4b[m HEAD@{43}: checkout: moving from main to fix-style/login-page
+[33m6bbae4b[m HEAD@{44}: pull origin main: Fast-forward
+[33m09fe8d6[m HEAD@{45}: checkout: moving from feature/navbar to main
+[33m7943608[m[33m ([m[1;32mfeature/navbar[m[33m)[m HEAD@{46}: commit: new feature navbar
+[33m09fe8d6[m HEAD@{47}: Branch: renamed refs/heads/navbar to refs/heads/feature/navbar
+[33m09fe8d6[m HEAD@{49}: Branch: renamed refs/heads/feature/dashboard to refs/heads/navbar
+[33m09fe8d6[m HEAD@{51}: checkout: moving from main to feature/dashboard
+[33m09fe8d6[m HEAD@{52}: commit: fix: delete onboarding
+[33m422858d[m HEAD@{53}: checkout: moving from main to main
+[33m422858d[m HEAD@{54}: reset: moving to 422858d
+[33mb351117[m HEAD@{55}: reset: moving to b351117
+[33m422858d[m HEAD@{56}: reset: moving to HEAD
+[33m422858d[m HEAD@{57}: checkout: moving from main to main
+[33m422858d[m HEAD@{58}: pull origin main: Fast-forward
+[33mb9c2e7d[m HEAD@{59}: checkout: moving from feature/onboarding to main
+[33md5b61c2[m[33m ([m[1;31morigin/feature/onboarding[m[33m, [m[1;32mfeature/onboarding[m[33m)[m HEAD@{60}: commit: onboarding page
+[33mb9c2e7d[m HEAD@{61}: checkout: moving from main to feature/onboarding
+[33mb9c2e7d[m HEAD@{62}: checkout: moving from main to main
+[33mb9c2e7d[m HEAD@{63}: reset: moving to origin/main
+[33m386b56d[m HEAD@{64}: checkout: moving from main to main
+[33m386b56d[m HEAD@{65}: reset: moving to origin/main
+[33m80c949b[m HEAD@{66}: checkout: moving from main to main
+[33m80c949b[m HEAD@{67}: pull origin main: Fast-forward
+[33mb290355[m HEAD@{68}: checkout: moving from feature/login-page to main
+[33m77eec78[m[33m ([m[1;31morigin/feature/login-page[m[33m, [m[1;32mfeature/login-page[m[33m)[m HEAD@{69}: commit: add login page and auth controller
+[33mb290355[m HEAD@{70}: checkout: moving from main to feature/login-page
+[33mb290355[m HEAD@{71}: checkout: moving from main to main
+[33mb290355[m HEAD@{72}: checkout: moving from feature/login-page to main
+[33mb290355[m HEAD@{73}: merge main: Fast-forward
+[33m2f62a23[m HEAD@{74}: checkout: moving from main to feature/login-page
+[33mb290355[m HEAD@{75}: pull origin main: Fast-forward
+[33m2f62a23[m HEAD@{76}: checkout: moving from feature/login-page to main
+[33m2f62a23[m HEAD@{77}: checkout: moving from main to feature/login-page
+[33m2f62a23[m HEAD@{78}: commit: install GetX package
+[33m8151f91[m HEAD@{79}: Branch: renamed refs/heads/master to refs/heads/main
+[33m8151f91[m HEAD@{81}: commit (initial): Initial commit

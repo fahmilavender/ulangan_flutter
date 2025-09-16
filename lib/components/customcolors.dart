@@ -27,5 +27,10 @@ class Customcolors {
   static const Color textFieldFill = Color(0xFFF6F7F9);
   static const Color textFieldBorder = Color(0xFFE0E5ED);
   static const Color textFieldLabel = Color(0xFFA9B0C5);
+  static const Color transparent = Colors.transparent;
+  static const Color iconGrey = Color(0xFF9E9E9E);     
+  static const Color cardSelected = Color(0xFF3D5AFE);  
+  static final Color cardBorder = Colors.grey.shade300; 
   static var grey300;
+
 }

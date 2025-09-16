@@ -1,6 +1,7 @@
 class Todo {
-  final int id;
+  final String id; // ✅ selalu String sekarang
   final String title;
+  final String description;
   final String category;
   final String date;
   final bool isDone;
@@ -10,6 +11,7 @@ class Todo {
   Todo({
     required this.id,
     required this.title,
+    required this.description,
     required this.category,
     this.date = "Today",
     this.isDone = false,
@@ -18,8 +20,9 @@ class Todo {
   });
 
   Todo copyWith({
-    int? id,
+    String? id,
     String? title,
+    String? description,
     String? category,
     String? date,
     bool? isDone,
@@ -29,6 +32,7 @@ class Todo {
     return Todo(
       id: id ?? this.id,
       title: title ?? this.title,
+      description: description ?? this.description,
       category: category ?? this.category,
       date: date ?? this.date,
       isDone: isDone ?? this.isDone,
@@ -37,3 +41,4 @@ class Todo {
     );
   }
 }
+

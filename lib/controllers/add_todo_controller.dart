@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 class AddTodoController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController titleController = TextEditingController();
-
-  final List<String> days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  final TextEditingController descriptionController = TextEditingController();
 
   final List<String> categories = [
     "Work",
@@ -21,13 +20,16 @@ class AddTodoController extends GetxController {
     "Study": Icons.school,
     "Personal": Icons.person,
     "Food": Icons.fastfood,
-    "Sport": Icons.sports,
+    "Sport": Icons.fitness_center,
     "Music": Icons.headphones,
   };
 
-  // Reactive state
   late final RxString selectedCategory;
   final RxInt selectedDay = 0.obs;
+
+  final Rx<DateTime> selectedDate = DateTime.now().obs;
+  final Rx<TimeOfDay> startTime = TimeOfDay(hour: 9, minute: 0).obs;
+  final Rx<TimeOfDay> endTime = TimeOfDay(hour: 17, minute: 0).obs;
 
   @override
   void onInit() {
@@ -35,11 +37,35 @@ class AddTodoController extends GetxController {
     selectedCategory = categories.first.obs;
   }
 
-  // Selectors
   void selectCategory(String cat) => selectedCategory.value = cat;
   void selectDay(int index) => selectedDay.value = index;
 
-  // Validator
+  Future<void> pickDate(BuildContext context) async {
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate.value,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null) {
+      selectedDate.value = picked;
+    }
+  }
+
+  Future<void> pickTime(BuildContext context, bool isStart) async {
+    final picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (picked != null) {
+      if (isStart) {
+        startTime.value = picked;
+      } else {
+        endTime.value = picked;
+      }
+    }
+  }
+
   String? validateTitle(String? value) {
     if (value == null || value.trim().isEmpty) {
       return "Title cannot be empty";
@@ -47,16 +73,20 @@ class AddTodoController extends GetxController {
     return null;
   }
 
-  // Reset form
   void resetForm() {
     titleController.clear();
+    descriptionController.clear();
     selectedCategory.value = categories.first;
     selectedDay.value = 0;
+    selectedDate.value = DateTime.now();
+    startTime.value = const TimeOfDay(hour: 9, minute: 0);
+    endTime.value = const TimeOfDay(hour: 17, minute: 0);
   }
 
   @override
   void onClose() {
     titleController.dispose();
+    descriptionController.dispose();
     super.onClose();
   }
 }
