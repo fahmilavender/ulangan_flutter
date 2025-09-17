@@ -124,7 +124,7 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                       child: Container(
                         width: 18,
                         height: 18,
-                        margin: const EdgeInsets.only(left: 8), // ✅ konsisten pake margin
+                        margin: const EdgeInsets.only(left: 8),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(

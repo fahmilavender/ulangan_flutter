@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage("assets/images/fahmi.jpg"),//tar ganti
+                  backgroundImage: AssetImage("assets/images/fahmi.jpg"),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 16),

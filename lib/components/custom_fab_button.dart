@@ -49,7 +49,7 @@ class _CustomFabButtonState extends State<CustomFabButton>
           height: widget.size,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Customcolors.bluewidget, // ✅ pakai custom color
+            color: Customcolors.bluewidget,
             boxShadow: [
               BoxShadow(
                 color: Customcolors.bluewidget.withOpacity(0.4),
