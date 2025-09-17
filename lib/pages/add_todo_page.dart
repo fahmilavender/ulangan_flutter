@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:ulangan_flutter/components/custom_dropdown.dart';
 import 'package:ulangan_flutter/components/customcolors.dart';
 import '../controllers/todo_controller.dart';
 import '../controllers/add_todo_controller.dart';
@@ -120,7 +121,6 @@ class AddTodoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 Row(
                   children: [
                     Expanded(
@@ -133,6 +133,7 @@ class AddTodoPage extends StatelessWidget {
                               horizontal: 16,
                               vertical: 14,
                             ),
+                            margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
                               color: Customcolors.textFieldFill,
                               borderRadius: BorderRadius.circular(16),
@@ -161,7 +162,6 @@ class AddTodoPage extends StatelessWidget {
                         );
                       }),
                     ),
-                    Container(margin: const EdgeInsets.only(left: 12)),
                     Expanded(
                       child: Obx(() {
                         final time = formController.endTime.value;
@@ -213,64 +213,31 @@ class AddTodoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: formController.categories.length,
-                  itemBuilder: (context, index) {
-                    final cat = formController.categories[index];
-                    return Obx(() {
-                      final isSelected =
-                          formController.selectedCategory.value == cat;
-                      return GestureDetector(
-                        onTap: () => formController.selectCategory(cat),
-                        child: Container(
-                          margin: const EdgeInsets.only(bottom: 12),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 14,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isSelected
-                                ? Customcolors.cardSelected.withOpacity(0.1)
-                                : Customcolors.textFieldFill,
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                              color: isSelected
-                                  ? Customcolors.cardSelected
-                                  : Customcolors.cardBorder,
-                              width: 1,
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                formController.categoryIcons[cat],
-                                color: Customcolors.cardSelected,
-                                size: 22,
-                              ),
-                              Container(margin: const EdgeInsets.only(left: 12)),
-                              Expanded(
-                                child: Text(
-                                  cat,
-                                  style: textTheme.bodyMedium?.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    color: Customcolors.textPrimary,
-                                  ),
-                                ),
-                              ),
-                              const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 16,
-                                color: Customcolors.iconGrey,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    });
-                  },
-                ),
+                  Obx(() {
+                    return Container(
+                      margin: const EdgeInsets.only(bottom: 16),
+                      child: CustomDropdown(
+                        items: formController.categories.map((cat) {
+                          return DropdownItem(
+                            value: cat,
+                            label: cat,
+                            color: Customcolors.cardSelected,
+                            icon: formController.categoryIcons[cat] ?? Icons.category,
+                          );
+                        }).toList(),
+                        value: formController.selectedCategory.value.isEmpty
+                            ? null
+                            : formController.selectedCategory.value,
+                        onChanged: (value) {
+                          if (value != null) {
+                            formController.selectCategory(value);
+                          }
+                        },
+                        hintText: "Select category",
+                        fillColor: Customcolors.textFieldFill,
+                      ),
+                    );
+                  }),
 
                 Container(
                   margin: const EdgeInsets.only(top: 10),
