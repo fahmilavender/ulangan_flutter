@@ -5,14 +5,9 @@ import 'package:ulangan_flutter/components/custom_textfield.dart';
 import 'package:ulangan_flutter/components/customcolors.dart';
 import 'package:ulangan_flutter/controllers/auth_controllers.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   final AuthController authController = Get.put(AuthController());
 
   @override
