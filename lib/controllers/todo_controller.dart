@@ -7,7 +7,7 @@ class TodoController extends GetxController {
   final RxnString activeTaskId = RxnString();
   final Uuid _uuid = const Uuid();
 
-  String _generateId() => _uuid.v4(); // ✅ String ID
+  String _generateId() => _uuid.v4();
 
   int _findIndexById(String id) => todos.indexWhere((t) => t.id == id);
 
@@ -20,7 +20,7 @@ class TodoController extends GetxController {
     String? endTime,
   }) {
     todos.add(Todo(
-      id: _generateId(), // ✅ String ID
+      id: _generateId(),
       title: title,
       description: description,
       category: category,

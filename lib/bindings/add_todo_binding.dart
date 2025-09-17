@@ -4,6 +4,6 @@ import 'package:ulangan_flutter/controllers/add_todo_controller.dart';
 class AddTodoBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<AddTodoController>(AddTodoController());
+    Get.lazyPut<AddTodoController>(() => AddTodoController());
   }
 }
