@@ -12,7 +12,7 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Customcolors.background,
+      backgroundColor: Customcolors.bghome,
       appBar: AppBar(
         title: const Text("History"),
         backgroundColor: Customcolors.bluecontainer,
