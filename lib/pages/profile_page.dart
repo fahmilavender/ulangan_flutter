@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: NetworkImage("https://i.pravatar.cc/150?img=4"),//tar ganti
+                  backgroundImage: AssetImage("assets/images/fahmi.jpg"),//tar ganti
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 16),
@@ -53,11 +53,11 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Nama: -",
+                        "Nama: Shidqi Dzil Fahmi",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       Text("Kelas: 11 PPLG 2"),
-                      Text("Absen: -"),
+                      Text("Absen: 33"),
                     ],
                   ),
                 ),
