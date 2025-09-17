@@ -53,7 +53,6 @@ class AddTodoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 Container(
                   margin: const EdgeInsets.only(top: 20, bottom: 20),
                   child: Text(
@@ -64,7 +63,6 @@ class AddTodoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 Container(
                   margin: const EdgeInsets.only(bottom: 12),
                   child: Text(
@@ -110,7 +108,6 @@ class AddTodoPage extends StatelessWidget {
                     ),
                   );
                 }),
-
                 Container(
                   margin: const EdgeInsets.only(bottom: 12),
                   child: Text(
@@ -213,32 +210,31 @@ class AddTodoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                  Obx(() {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 16),
-                      child: CustomDropdown(
-                        items: formController.categories.map((cat) {
-                          return DropdownItem(
-                            value: cat,
-                            label: cat,
-                            color: Customcolors.cardSelected,
-                            icon: formController.categoryIcons[cat] ?? Icons.category,
-                          );
-                        }).toList(),
-                        value: formController.selectedCategory.value.isEmpty
-                            ? null
-                            : formController.selectedCategory.value,
-                        onChanged: (value) {
-                          if (value != null) {
-                            formController.selectCategory(value);
-                          }
-                        },
-                        hintText: "Select category",
-                        fillColor: Customcolors.textFieldFill,
-                      ),
-                    );
-                  }),
-
+                Obx(() {
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 16),
+                    child: CustomDropdown(
+                      items: formController.categories.map((cat) {
+                        return DropdownItem(
+                          value: cat,
+                          label: cat,
+                          color: Customcolors.cardSelected,
+                          icon: formController.categoryIcons[cat] ?? Icons.category,
+                        );
+                      }).toList(),
+                      value: formController.selectedCategory.value.isEmpty
+                          ? null
+                          : formController.selectedCategory.value,
+                      onChanged: (value) {
+                        if (value != null) {
+                          formController.selectCategory(value);
+                        }
+                      },
+                      hintText: "Select category",
+                      fillColor: Customcolors.textFieldFill,
+                    ),
+                  );
+                }),
                 Container(
                   margin: const EdgeInsets.only(top: 10),
                   child: CustomTextField(
@@ -248,7 +244,6 @@ class AddTodoPage extends StatelessWidget {
                     validator: formController.validateTitle,
                   ),
                 ),
-
                 Container(
                   margin: const EdgeInsets.only(top: 14),
                   child: CustomTextField(
@@ -257,7 +252,6 @@ class AddTodoPage extends StatelessWidget {
                     focusedBorderColor: Customcolors.bluewidget,
                   ),
                 ),
-
                 Container(
                   margin: const EdgeInsets.only(top: 22),
                   child: CustomButton(
