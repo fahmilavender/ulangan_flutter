@@ -14,10 +14,10 @@ class HistoryPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Customcolors.bghome,
       appBar: AppBar(
-        title: const Text("History"),
+        title: const Text("History Page"),
         backgroundColor: Customcolors.bluecontainer,
         foregroundColor: Customcolors.background,
-        elevation: 0,
+        centerTitle: true,
       ),
       body: Obx(() {
         final doneTodos = todoController.todos.where((t) => t.isDone).toList();
