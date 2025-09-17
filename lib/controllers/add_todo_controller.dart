@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 
 class AddTodoController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -46,6 +47,21 @@ class AddTodoController extends GetxController {
       initialDate: selectedDate.value,
       firstDate: DateTime.now(),
       lastDate: DateTime(2100),
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Customcolors.bluewidget,
+            colorScheme: ColorScheme.light(
+              primary: Customcolors.bluewidget,
+              onPrimary: Customcolors.white,
+              surface: Customcolors.white,
+              onSurface: Customcolors.textPrimary,
+            ),
+            dialogBackgroundColor: Customcolors.white,
+          ),
+          child: child!,
+        );
+      },
     );
     if (picked != null) {
       selectedDate.value = picked;
@@ -56,6 +72,21 @@ class AddTodoController extends GetxController {
     final picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Customcolors.bluewidget,
+            colorScheme: ColorScheme.light(
+              primary: Customcolors.bluewidget,
+              onPrimary: Customcolors.white,
+              surface: Customcolors.white,
+              onSurface: Customcolors.textPrimary,
+            ),
+            dialogBackgroundColor: Customcolors.white,
+          ),
+          child: child!,
+        );
+      },
     );
     if (picked != null) {
       if (isStart) {
