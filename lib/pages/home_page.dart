@@ -7,14 +7,9 @@ import 'package:ulangan_flutter/components/todocardwidget.dart';
 import '../controllers/todo_controller.dart';
 import '../routes/routes.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   final TodoController todoController = Get.find<TodoController>();
 
   @override
