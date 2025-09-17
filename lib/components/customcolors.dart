@@ -31,6 +31,7 @@ class Customcolors {
   static const Color iconGrey = Color(0xFF9E9E9E);     
   static const Color cardSelected = Color(0xFF3D5AFE);  
   static final Color cardBorder = Colors.grey.shade300; 
+  static final Color grey400 = Colors.grey.shade400; 
   static var grey300;
 
 }

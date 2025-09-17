@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => Get.toNamed(AppRoutes.addTodo),
               backgroundColor: Customcolors.bluewidget,
               icon: Icons.add,
-              iconColor: Customcolors.background,
+              iconColor: Customcolors.white,
               size: 56,
             ),
           ),
