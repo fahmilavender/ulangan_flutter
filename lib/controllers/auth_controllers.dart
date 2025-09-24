@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ulangan_flutter/routes/routes.dart';
 
 class AuthController extends GetxController {
@@ -23,16 +24,21 @@ class AuthController extends GetxController {
     }
 
     isLoading.value = true;
-    await Future.delayed(const Duration(seconds: 2));
+    try {
+      await Future.delayed(const Duration(seconds: 2));
 
-    if (username == 'admin' && password == 'admin123') {
-      Get.snackbar('Sukses', 'Login berhasil!');
-      Get.offAllNamed(AppRoutes.dashboardPage);
-    } else {
-      Get.snackbar('Login Gagal', 'Username atau Password Salah');
+      if (username == 'admin' && password == 'admin123') {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString("username", username);
+
+        Get.snackbar('Sukses', 'Login berhasil!');
+        Get.offAllNamed(AppRoutes.dashboardPage);
+      } else {
+        Get.snackbar('Login Gagal', 'Username atau Password salah.');
+      }
+    } finally {
+      isLoading.value = false;
     }
-
-    isLoading.value = false;
   }
 
   @override
