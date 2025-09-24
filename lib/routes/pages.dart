@@ -1,12 +1,14 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:ulangan_flutter/bindings/add_todo_binding.dart';
 import 'package:ulangan_flutter/bindings/auth_binding.dart';
+import 'package:ulangan_flutter/bindings/splash_binding.dart';
 import 'package:ulangan_flutter/pages/add_todo_page.dart';
 import 'package:ulangan_flutter/pages/dashboard_page.dart';
 import 'package:ulangan_flutter/pages/history_page.dart';
 import 'package:ulangan_flutter/pages/home_page.dart';
 import 'package:ulangan_flutter/pages/login_page.dart';
 import 'package:ulangan_flutter/pages/profile_page.dart';
+import 'package:ulangan_flutter/pages/splashscreen_page.dart';
 import 'package:ulangan_flutter/routes/routes.dart';
 
 class AppPages {
@@ -38,6 +40,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.profilePage, 
       page: () => ProfilePage(),
+    ),
+    GetPage(
+      name: AppRoutes.splashPage, 
+      page: () => SplashscreenPage(),
+      binding: SplashBinding(),
     ),
     ];
 }

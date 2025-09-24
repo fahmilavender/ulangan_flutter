@@ -20,25 +20,31 @@ class LoginPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+             Row(
                 children: [
                   CircleAvatar(
                     backgroundColor: Customcolors.bluewidget,
                     radius: 20,
-                    child: const Icon(Icons.check_box,
-                        color: Customcolors.white, size: 20),
+                    child: const Icon(
+                      Icons.check_box,
+                      color: Customcolors.white,
+                      size: 20,
+                    ),
                   ),
-                  const SizedBox(width: 8),
-                  const Text(
-                    "TodyApp",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Customcolors.bluewidget,
+                  Container(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: const Text(
+                      "TodyApp",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Customcolors.bluewidget,
+                      ),
                     ),
                   ),
                 ],
               ),
+
               const Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
