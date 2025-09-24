@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:ulangan_flutter/bindings/add_todo_binding.dart';
 import 'package:ulangan_flutter/bindings/auth_binding.dart';
+import 'package:ulangan_flutter/bindings/logout_binding.dart';
 import 'package:ulangan_flutter/bindings/splash_binding.dart';
 import 'package:ulangan_flutter/pages/add_todo_page.dart';
 import 'package:ulangan_flutter/pages/dashboard_page.dart';
@@ -40,6 +41,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.profilePage, 
       page: () => ProfilePage(),
+      binding: LogoutBinding(),
     ),
     GetPage(
       name: AppRoutes.splashPage, 
