@@ -34,44 +34,62 @@ class HistoryPage extends StatelessWidget {
           );
         }
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: const Text(
-                "Completed Tasks",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Customcolors.textPrimary,
-                ),
-              ),
-            ),
+        return ListView.separated(
+          padding: const EdgeInsets.all(16),
+          itemCount: doneTodos.length,
+          separatorBuilder: (_, __) => const SizedBox(height: 12),
+          itemBuilder: (context, index) {
+            final todo = doneTodos[index];
+            return TodoCardWidget(
+              title: todo.title,
+              description: todo.description,
+              time: (todo.startTime != null && todo.endTime != null)
+                  ? "${todo.startTime} - ${todo.endTime}"
+                  : null,
+              project: todo.category,
+              date: todo.date,
+              isDone: todo.isDone,
+              isHistory: true,
+              showDelete: true,
+              showEdit: true,
+              onDelete: () => todoController.deleteTodo(todo.id),
+              onEdit: () {
+                final titleController =
+                    TextEditingController(text: todo.title);
+                final descController =
+                    TextEditingController(text: todo.description);
 
-            Expanded(
-              child: ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: doneTodos.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 12),
-                itemBuilder: (context, index) {
-                  final todo = doneTodos[index];
-                  return TodoCardWidget(
-                    title: todo.title,
-                    description: todo.description,
-                    time: (todo.startTime != null && todo.endTime != null)
-                        ? "${todo.startTime} - ${todo.endTime}"
-                        : null,
-                    project: todo.category,
-                    date: todo.date,
-                    isDone: todo.isDone,
-                    isHistory: true,
-                    showDelete: false, 
-                  );
-                },
-              ),
-            ),
-          ],
+                Get.defaultDialog(
+                  title: "Edit Todo",
+                  content: Column(
+                    children: [
+                      TextField(
+                        controller: titleController,
+                        decoration: const InputDecoration(labelText: "Title"),
+                      ),
+                      TextField(
+                        controller: descController,
+                        decoration: const InputDecoration(labelText: "Description"),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {
+                          todoController.editTodo(
+                            todo.id,
+                            titleController.text,
+                            descController.text,
+                            todo.category,
+                          );
+                          Get.back();
+                        },
+                        child: const Text("Save Changes"),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
         );
       }),
     );
