@@ -1,25 +1,37 @@
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 import '../models/todo_model.dart';
+import '../Helper/db_helper.dart';
 
 class TodoController extends GetxController {
   final RxList<Todo> todos = <Todo>[].obs;
   final RxnString activeTaskId = RxnString();
-  final Uuid _uuid = const Uuid();
+  final _uuid = const Uuid();
+  final _dbHelper = DBHelper();
 
   String _generateId() => _uuid.v4();
-
   int _findIndexById(String id) => todos.indexWhere((t) => t.id == id);
 
-  void addTodo(
+  @override
+  void onInit() {
+    super.onInit();
+    loadTodos();
+  }
+
+  Future<void> loadTodos() async {
+    final data = await _dbHelper.getTodos();
+    todos.assignAll(data);
+  }
+
+  Future<void> addTodo(
     String title,
     String description,
     String category, {
     String date = "Today",
     String? startTime,
     String? endTime,
-  }) {
-    todos.add(Todo(
+  }) async {
+    final todo = Todo(
       id: _generateId(),
       title: title,
       description: description,
@@ -27,21 +39,26 @@ class TodoController extends GetxController {
       date: date,
       startTime: startTime,
       endTime: endTime,
-    ));
+    );
+    await _dbHelper.insertTodo(todo);
+    todos.add(todo);
   }
 
-  void toggleDone(String id) {
+  Future<void> toggleDone(String id) async {
     final index = _findIndexById(id);
     if (index != -1) {
-      todos[index] = todos[index].copyWith(isDone: !todos[index].isDone);
+      final updated = todos[index].copyWith(isDone: !todos[index].isDone);
+      todos[index] = updated;
+      await _dbHelper.updateTodo(updated);
     }
   }
 
-  void deleteTodo(String id) {
+  Future<void> deleteTodo(String id) async {
+    await _dbHelper.deleteTodo(id);
     todos.removeWhere((t) => t.id == id);
   }
 
-  void editTodo(
+  Future<void> editTodo(
     String id,
     String newTitle,
     String newDescription,
@@ -49,10 +66,10 @@ class TodoController extends GetxController {
     String? newDate,
     String? newStartTime,
     String? newEndTime,
-  }) {
+  }) async {
     final index = _findIndexById(id);
     if (index != -1) {
-      todos[index] = todos[index].copyWith(
+      final updated = todos[index].copyWith(
         title: newTitle,
         description: newDescription,
         category: newCategory,
@@ -60,6 +77,8 @@ class TodoController extends GetxController {
         startTime: newStartTime ?? todos[index].startTime,
         endTime: newEndTime ?? todos[index].endTime,
       );
+      todos[index] = updated;
+      await _dbHelper.updateTodo(updated);
     }
   }
 
