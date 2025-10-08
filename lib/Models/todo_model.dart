@@ -1,22 +1,22 @@
 class Todo {
-  final String id; 
+  final String id;
   final String title;
   final String description;
   final String category;
   final String date;
-  final bool isDone;
   final String? startTime;
   final String? endTime;
+  final bool isDone;
 
   Todo({
     required this.id,
     required this.title,
     required this.description,
     required this.category,
-    this.date = "Today",
-    this.isDone = false,
+    required this.date,
     this.startTime,
     this.endTime,
+    this.isDone = false,
   });
 
   Todo copyWith({
@@ -25,9 +25,9 @@ class Todo {
     String? description,
     String? category,
     String? date,
-    bool? isDone,
     String? startTime,
     String? endTime,
+    bool? isDone,
   }) {
     return Todo(
       id: id ?? this.id,
@@ -35,10 +35,35 @@ class Todo {
       description: description ?? this.description,
       category: category ?? this.category,
       date: date ?? this.date,
-      isDone: isDone ?? this.isDone,
       startTime: startTime ?? this.startTime,
       endTime: endTime ?? this.endTime,
+      isDone: isDone ?? this.isDone,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'category': category,
+      'date': date,
+      'startTime': startTime,
+      'endTime': endTime,
+      'isDone': isDone ? 1 : 0,
+    };
+  }
+
+  factory Todo.fromMap(Map<String, dynamic> map) {
+    return Todo(
+      id: map['id'],
+      title: map['title'],
+      description: map['description'],
+      category: map['category'],
+      date: map['date'],
+      startTime: map['startTime'],
+      endTime: map['endTime'],
+      isDone: map['isDone'] == 1,
     );
   }
 }
-
