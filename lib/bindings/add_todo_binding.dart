@@ -6,4 +6,4 @@ class AddTodoBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<AddTodoController>(() => AddTodoController());
   }
-}
+} 
