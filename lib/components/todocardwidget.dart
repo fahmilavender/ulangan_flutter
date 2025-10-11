@@ -20,8 +20,10 @@ class TodoCardWidget extends StatefulWidget {
   final bool isDone;
   final bool isHistory;
   final bool showDelete;
+
   final VoidCallback? onToggleDone;
   final VoidCallback? onDelete;
+  final VoidCallback? onEdit;
 
   const TodoCardWidget({
     super.key,
@@ -35,6 +37,7 @@ class TodoCardWidget extends StatefulWidget {
     this.showDelete = true,
     this.onToggleDone,
     this.onDelete,
+    this.onEdit,
   });
 
   @override
@@ -118,13 +121,13 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                     ),
                   ),
 
-                  if (!widget.isHistory)
+                  if (!widget.isHistory && widget.onToggleDone != null)
                     GestureDetector(
                       onTap: widget.onToggleDone,
                       child: Container(
                         width: 18,
                         height: 18,
-                        margin: const EdgeInsets.only(left: 8), // ✅ konsisten pake margin
+                        margin: const EdgeInsets.only(left: 8),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -142,27 +145,20 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                                 size: 14, color: Customcolors.white)
                             : null,
                       ),
-                    )
-                  else
-                    Container(
-                      width: 22,
-                      height: 22,
-                      margin: const EdgeInsets.only(left: 8),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Customcolors.bluewidget,
-                      ),
-                      child: const Icon(Icons.check,
-                          size: 14, color: Customcolors.white),
                     ),
+
                   if (widget.showDelete && widget.onDelete != null)
-                    Container(
-                      margin: const EdgeInsets.only(left: 0),
-                      child: IconButton(
-                        icon: const Icon(Icons.close,
-                            color: Customcolors.textPrimary, size: 20),
-                        onPressed: widget.onDelete,
-                      ),
+                    IconButton(
+                      icon: const Icon(Icons.delete,
+                          color: Customcolors.textPrimary, size: 20),
+                      onPressed: widget.onDelete,
+                    ),
+
+                  if (widget.isHistory && widget.onEdit != null)
+                    IconButton(
+                      icon: const Icon(Icons.edit,
+                          color: Customcolors.textPrimary, size: 20),
+                      onPressed: widget.onEdit,
                     ),
                 ],
               ),

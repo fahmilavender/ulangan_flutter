@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:ulangan_flutter/components/customcolors.dart';
 import 'package:ulangan_flutter/components/todocardwidget.dart';
 import '../controllers/todo_controller.dart';
+import '../routes/routes.dart';
 
 class HistoryPage extends StatelessWidget {
   HistoryPage({super.key});
-
   final TodoController todoController = Get.find<TodoController>();
 
   @override
@@ -26,10 +26,7 @@ class HistoryPage extends StatelessWidget {
           return const Center(
             child: Text(
               "Belum ada todo yang selesai.",
-              style: TextStyle(
-                fontSize: 16,
-                color: Customcolors.textSecondary,
-              ),
+              style: TextStyle(fontSize: 16, color: Customcolors.textSecondary),
             ),
           );
         }
@@ -48,7 +45,6 @@ class HistoryPage extends StatelessWidget {
                 ),
               ),
             ),
-
             Expanded(
               child: ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -66,7 +62,12 @@ class HistoryPage extends StatelessWidget {
                     date: todo.date,
                     isDone: todo.isDone,
                     isHistory: true,
-                    showDelete: false, 
+                    showDelete: true,
+                    onDelete: () => todoController.deleteTodo(todo.id),
+                    onEdit: () => Get.toNamed(
+                      AppRoutes.editTodo,
+                      arguments: todo,
+                    ),
                   );
                 },
               ),
