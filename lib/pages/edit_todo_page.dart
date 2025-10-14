@@ -26,7 +26,6 @@ class _EditTodoPageState extends State<EditTodoPage> {
     super.initState();
     final todo = widget.todo;
 
-    // Set field dengan data lama
     formController.titleController.text = todo.title;
     formController.descriptionController.text = todo.description;
     formController.selectedCategory.value = todo.category;

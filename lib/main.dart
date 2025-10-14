@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulangan_flutter/bindings/auth_binding.dart';
 import 'package:ulangan_flutter/bindings/logout_binding.dart';
+import 'package:ulangan_flutter/controllers/layout_controller.dart';
 import 'package:ulangan_flutter/routes/pages.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:ulangan_flutter/routes/routes.dart';
@@ -12,6 +13,7 @@ void main() async {
   await initializeDateFormatting('id_ID', null);
 
   Get.put(LogoutController());
+  Get.put(LayoutController());
 
   runApp(const MyApp());
 }
