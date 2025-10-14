@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; import 'package:ulangan_flutter/components/customcolors.dart';
+import 'package:flutter/material.dart';
+import 'package:ulangan_flutter/components/customcolors.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -14,6 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.fillColor,
     this.borderColor,
     this.focusedBorderColor,
+    this.maxLines = 1, // 🔹 Tambahan baru
   });
 
   final String label;
@@ -28,15 +30,17 @@ class CustomTextField extends StatelessWidget {
   final Color? fillColor;
   final Color? borderColor;
   final Color? focusedBorderColor;
+  final int maxLines; // 🔹 Tambahan baru
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4), 
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: TextFormField(
         controller: controller,
         obscureText: isPassword,
         validator: validator,
+        maxLines: maxLines, // 🔹 Tambahan baru
         style: TextStyle(
           color: textColor ?? Customcolors.textPrimary,
           fontSize: 15,

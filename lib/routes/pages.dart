@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:ulangan_flutter/bindings/add_todo_binding.dart';
 import 'package:ulangan_flutter/bindings/auth_binding.dart';
+import 'package:ulangan_flutter/bindings/layout_binding.dart';
 import 'package:ulangan_flutter/bindings/logout_binding.dart';
 import 'package:ulangan_flutter/bindings/splash_binding.dart';
 import 'package:ulangan_flutter/pages/add_todo_page.dart';
@@ -24,7 +25,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.homePage,
       page: () => HomePage(),
-      binding: AuthBinding(),
+      binding: LayoutBinding(),
     ),
     GetPage(
       name: AppRoutes.dashboardPage,
@@ -36,7 +37,9 @@ class AppPages {
       page: () => AddTodoPage(),
       binding: AddTodoBinding(),
     ),
-    GetPage(name: AppRoutes.historyPage, page: () => HistoryPage()),
+    GetPage(
+      name: AppRoutes.historyPage, 
+      page: () => HistoryPage()),
     GetPage(
       name: AppRoutes.profilePage,
       page: () => ProfilePage(),
