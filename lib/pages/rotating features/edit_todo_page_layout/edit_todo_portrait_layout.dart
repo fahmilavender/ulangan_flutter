@@ -65,22 +65,38 @@ class _EditTodoMobileLayoutState extends State<EditTodoMobileLayout> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () => Get.back(),
-                  child: const Icon(Icons.close_rounded,
-                      color: Customcolors.black, size: 28),
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: GestureDetector(
+                    onTap: () => Get.back(),
+                    child: const Icon(
+                      Icons.close_rounded,
+                      color: Customcolors.black,
+                      size: 28,
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 20),
-                Text("Edit Task",
-                    style: textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Customcolors.textPrimary)),
-                const SizedBox(height: 20),
 
-                // DATE
-                Text("DATE",
-                    style: textTheme.labelSmall
-                        ?.copyWith(fontWeight: FontWeight.bold)),
+                Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    "Edit Task",
+                    style: textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Customcolors.textPrimary,
+                    ),
+                  ),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    "DATE",
+                    style: textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
                 Obx(() {
                   final date = formController.selectedDate.value;
                   return GestureDetector(
@@ -88,125 +104,141 @@ class _EditTodoMobileLayoutState extends State<EditTodoMobileLayout> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 14),
-                      margin: const EdgeInsets.only(bottom: 16, top: 8),
+                      margin: const EdgeInsets.only(bottom: 16),
                       decoration: BoxDecoration(
                         color: Customcolors.textFieldFill,
                         borderRadius: BorderRadius.circular(16),
-                        border:
-                            Border.all(color: Customcolors.textFieldBorder),
+                        border: Border.all(color: Customcolors.textFieldBorder),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(_formatDate(date),
-                              style: textTheme.bodyMedium?.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: Customcolors.textPrimary)),
-                          const Icon(Icons.calendar_today,
-                              size: 18, color: Customcolors.iconGrey),
+                          Text(
+                            _formatDate(date),
+                            style: textTheme.bodyMedium?.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: Customcolors.textPrimary,
+                            ),
+                          ),
+                          const Icon(
+                            Icons.calendar_today,
+                            size: 18,
+                            color: Customcolors.iconGrey,
+                          ),
                         ],
                       ),
                     ),
                   );
                 }),
 
-                // TIME
-                Text("TIME",
-                    style: textTheme.labelSmall
-                        ?.copyWith(fontWeight: FontWeight.bold)),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Obx(() {
-                        final start = formController.startTime.value;
-                        return GestureDetector(
-                          onTap: () =>
-                              formController.pickTime(context, true),
-                          child: _timeBox(
-                              context, start.format(context), textTheme),
-                        );
-                      }),
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    "TIME",
+                    style: textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
-                    Expanded(
-                      child: Obx(() {
-                        final end = formController.endTime.value;
-                        return GestureDetector(
-                          onTap: () =>
-                              formController.pickTime(context, false),
-                          child:
-                              _timeBox(context, end.format(context), textTheme),
-                        );
-                      }),
-                    ),
-                  ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Obx(() {
+                          final start = formController.startTime.value;
+                          return GestureDetector(
+                            onTap: () => formController.pickTime(context, true),
+                            child: _timeBox(context, start.format(context), textTheme),
+                          );
+                        }),
+                      ),
+                      Expanded(
+                        child: Obx(() {
+                          final end = formController.endTime.value;
+                          return GestureDetector(
+                            onTap: () => formController.pickTime(context, false),
+                            child: _timeBox(context, end.format(context), textTheme),
+                          );
+                        }),
+                      ),
+                    ],
+                  ),
                 ),
 
-                // CATEGORY
-                const SizedBox(height: 16),
-                Text("CATEGORY",
-                    style: textTheme.labelSmall
-                        ?.copyWith(fontWeight: FontWeight.bold)),
-                Obx(() {
-                  return CustomDropdown(
-                    items: formController.categories
-                        .map((cat) => DropdownItem(
-                              value: cat,
-                              label: cat,
-                              color: Customcolors.cardSelected,
-                              icon: formController.categoryIcons[cat] ??
-                                  Icons.category,
-                            ))
-                        .toList(),
-                    value: formController.selectedCategory.value.isEmpty
-                        ? null
-                        : formController.selectedCategory.value,
-                    onChanged: (value) {
-                      if (value != null) formController.selectCategory(value);
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    "CATEGORY",
+                    style: textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 16),
+                  child: Obx(() {
+                    return CustomDropdown(
+                      items: formController.categories
+                          .map((cat) => DropdownItem(
+                                value: cat,
+                                label: cat,
+                                color: Customcolors.cardSelected,
+                                icon: formController.categoryIcons[cat] ?? Icons.category,
+                              ))
+                          .toList(),
+                      value: formController.selectedCategory.value.isEmpty
+                          ? null
+                          : formController.selectedCategory.value,
+                      onChanged: (value) {
+                        if (value != null) formController.selectCategory(value);
+                      },
+                      hintText: "Select category",
+                      fillColor: Customcolors.textFieldFill,
+                    );
+                  }),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: CustomTextField(
+                    controller: formController.titleController,
+                    label: "Title",
+                    focusedBorderColor: Customcolors.bluewidget,
+                    validator: formController.validateTitle,
+                  ),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.only(bottom: 24),
+                  child: CustomTextField(
+                    controller: formController.descriptionController,
+                    label: "Description",
+                    focusedBorderColor: Customcolors.bluewidget,
+                  ),
+                ),
+
+                Container(
+                  width: double.infinity,
+                  child: CustomButton(
+                    myText: "Update",
+                    backgroundColor: Customcolors.bluewidget,
+                    myTextColor: Customcolors.white,
+                    onPressed: () async {
+                      if (formController.formKey.currentState!.validate()) {
+                        await todoController.editTodo(
+                          widget.todo.id,
+                          formController.titleController.text,
+                          formController.descriptionController.text,
+                          formController.selectedCategory.value,
+                          newDate: _formatDate(formController.selectedDate.value),
+                          newStartTime: formController.startTime.value.format(context),
+                          newEndTime: formController.endTime.value.format(context),
+                        );
+                        Get.back();
+                      }
                     },
-                    hintText: "Select category",
-                    fillColor: Customcolors.textFieldFill,
-                  );
-                }),
-
-                // TITLE
-                const SizedBox(height: 16),
-                CustomTextField(
-                  controller: formController.titleController,
-                  label: "Title",
-                  focusedBorderColor: Customcolors.bluewidget,
-                  validator: formController.validateTitle,
-                ),
-
-                // DESCRIPTION
-                const SizedBox(height: 16),
-                CustomTextField(
-                  controller: formController.descriptionController,
-                  label: "Description",
-                  focusedBorderColor: Customcolors.bluewidget,
-                ),
-
-                const SizedBox(height: 24),
-                CustomButton(
-                  myText: "Update",
-                  backgroundColor: Customcolors.bluewidget,
-                  myTextColor: Customcolors.white,
-                  onPressed: () async {
-                    if (formController.formKey.currentState!.validate()) {
-                      await todoController.editTodo(
-                        widget.todo.id,
-                        formController.titleController.text,
-                        formController.descriptionController.text,
-                        formController.selectedCategory.value,
-                        newDate:
-                            _formatDate(formController.selectedDate.value),
-                        newStartTime:
-                            formController.startTime.value.format(context),
-                        newEndTime:
-                            formController.endTime.value.format(context),
-                      );
-                      Get.back();
-                    }
-                  },
+                  ),
                 ),
               ],
             ),
@@ -228,12 +260,18 @@ class _EditTodoMobileLayoutState extends State<EditTodoMobileLayout> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(text,
-              style: theme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: Customcolors.textPrimary)),
-          const Icon(Icons.access_time,
-              size: 18, color: Customcolors.iconGrey),
+          Text(
+            text,
+            style: theme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.w500,
+              color: Customcolors.textPrimary,
+            ),
+          ),
+          const Icon(
+            Icons.access_time,
+            size: 18,
+            color: Customcolors.iconGrey,
+          ),
         ],
       ),
     );

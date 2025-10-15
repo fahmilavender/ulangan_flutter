@@ -22,7 +22,7 @@ class EditTodoPage extends StatelessWidget {
         return Obx(
           () => layoutController.isMobile.value
               ? EditTodoMobileLayout(todo: todo)
-              : EditTodoWidescreenLayout(todo: todo),
+              : EditTodoLandscapeLayout(todo: todo),
         );
       },
     );
