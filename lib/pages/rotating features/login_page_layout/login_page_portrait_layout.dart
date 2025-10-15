@@ -29,53 +29,69 @@ class LoginMobileLayout extends StatelessWidget {
                     size: 20,
                   ),
                 ),
-                const SizedBox(width: 8),
-                const Text(
-                  "TodyApp",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Customcolors.bluewidget,
+                Container(
+                  margin: const EdgeInsets.only(left: 8),
+                  child: const Text(
+                    "TodyApp",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Customcolors.bluewidget,
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            const Text(
-              "Sign in to your\nAccount",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Customcolors.textPrimary,
+
+            Container(
+              margin: const EdgeInsets.only(top: 20),
+              child: const Text(
+                "Sign in to your\nAccount",
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Customcolors.textPrimary,
+                ),
               ),
             ),
-            const SizedBox(height: 6),
-            const Text(
-              "Enter your username and password to log in",
-              style: TextStyle(
-                fontSize: 14,
-                color: Customcolors.textSecondary,
+
+            Container(
+              margin: const EdgeInsets.only(top: 6),
+              child: const Text(
+                "Enter your username and password to log in",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Customcolors.textSecondary,
+                ),
               ),
             ),
-            const SizedBox(height: 16),
-            CustomTextField(
-              label: "Username",
-              controller: authController.usernameController,
-              isPassword: false,
-              focusedBorderColor: Customcolors.bluewidget,
-            ),
-            const SizedBox(height: 12),
-            Obx(
-              () => CustomTextField(
-                label: "Password",
-                controller: authController.passwordController,
-                isPassword: authController.isPasswordHidden.value,
-                showToggle: true,
-                onToggle: authController.togglePasswordVisibility,
+
+            Container(
+              margin: const EdgeInsets.only(top: 16),
+              child: CustomTextField(
+                label: "Username",
+                controller: authController.usernameController,
+                isPassword: false,
                 focusedBorderColor: Customcolors.bluewidget,
               ),
             ),
-            Align(
+
+            Container(
+              margin: const EdgeInsets.only(top: 12),
+              child: Obx(
+                () => CustomTextField(
+                  label: "Password",
+                  controller: authController.passwordController,
+                  isPassword: authController.isPasswordHidden.value,
+                  showToggle: true,
+                  onToggle: authController.togglePasswordVisibility,
+                  focusedBorderColor: Customcolors.bluewidget,
+                ),
+              ),
+            ),
+
+            Container(
+              margin: const EdgeInsets.only(top: 4),
               alignment: Alignment.centerRight,
               child: TextButton(
                 onPressed: () {},
@@ -85,14 +101,17 @@ class LoginMobileLayout extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 12),
-            Obx(
-              () => CustomButton(
-                myText: "Log In",
-                isLoading: authController.isLoading.value,
-                onPressed: authController.login,
-                myTextColor: Customcolors.white,
-                backgroundColor: Customcolors.bluewidget,
+
+            Container(
+              margin: const EdgeInsets.only(top: 12),
+              child: Obx(
+                () => CustomButton(
+                  myText: "Log In",
+                  isLoading: authController.isLoading.value,
+                  onPressed: authController.login,
+                  myTextColor: Customcolors.white,
+                  backgroundColor: Customcolors.bluewidget,
+                ),
               ),
             ),
           ],
