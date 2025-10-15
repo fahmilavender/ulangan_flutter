@@ -154,6 +154,15 @@ class _TodoCardWidgetState extends State<TodoCardWidget> {
                       onPressed: widget.onDelete,
                     ),
 
+                  // Ikon panah untuk menandakan card bisa di-expand
+                  Icon(
+                    _expanded
+                        ? Icons.keyboard_arrow_up
+                        : Icons.keyboard_arrow_down,
+                    color: Customcolors.grey600,
+                    size: 20,
+                  ),
+
                   if (widget.isHistory && widget.onEdit != null)
                     IconButton(
                       icon: const Icon(Icons.edit,
