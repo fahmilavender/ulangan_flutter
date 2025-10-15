@@ -16,12 +16,12 @@ class EditTodoWidescreenLayout extends StatelessWidget {
   final AddTodoController formController = Get.find<AddTodoController>();
 
   EditTodoWidescreenLayout({super.key, required this.todo}) {
-    // Inisialisasi form dengan data todo lama
     formController.titleController.text = todo.title;
     formController.descriptionController.text = todo.description;
     formController.selectedCategory.value = todo.category;
-    formController.selectedDate.value =
-        DateFormat("d MMM yyyy").parse(todo.date);
+    formController.selectedDate.value = DateFormat(
+      "d MMM yyyy",
+    ).parse(todo.date);
 
     if (todo.startTime != null) {
       final parts = todo.startTime!.split(":");
@@ -43,10 +43,12 @@ class EditTodoWidescreenLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
 
     final textTheme = Theme.of(context).textTheme;
 
@@ -60,7 +62,6 @@ class EditTodoWidescreenLayout extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // HEADER
                 Container(
                   padding: const EdgeInsets.only(bottom: 28),
                   child: Row(
@@ -87,154 +88,165 @@ class EditTodoWidescreenLayout extends StatelessWidget {
                 ),
 
                 // FORM
-                LayoutBuilder(builder: (context, constraints) {
-                  double itemWidth = (constraints.maxWidth - 32) / 2;
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    double itemWidth = (constraints.maxWidth - 32) / 2;
 
-                  return Column(
-                    children: [
-                      // Date + Category
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 20, left: 2),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _buildSection(
-                              textTheme,
-                              label: "Date",
-                              width: itemWidth,
-                              child: Obx(() {
-                                final date = formController.selectedDate.value;
-                                return GestureDetector(
-                                  onTap: () => formController.pickDate(context),
-                                  child: _buildFieldContainer(
-                                    context,
-                                    textTheme,
-                                    _formatDate(date),
-                                    Icons.calendar_today,
-                                  ),
-                                );
-                              }),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 26.5),
-                              child: _buildSection(
+                    return Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(bottom: 20, left: 2),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildSection(
                                 textTheme,
-                                label: "Category",
+                                label: "Date",
                                 width: itemWidth,
                                 child: Obx(() {
-                                  return CustomDropdown(
-                                    items: formController.categories.map((cat) {
-                                      return DropdownItem(
-                                        value: cat,
-                                        label: cat,
-                                        color: Customcolors.cardSelected,
-                                        icon: formController.categoryIcons[cat] ??
-                                            Icons.category,
-                                      );
-                                    }).toList(),
-                                    value: formController
-                                            .selectedCategory.value.isEmpty
-                                        ? null
-                                        : formController
-                                            .selectedCategory.value,
-                                    onChanged: (value) {
-                                      if (value != null) {
-                                        formController.selectCategory(value);
-                                      }
-                                    },
-                                    hintText: "Select category",
-                                    fillColor: Customcolors.textFieldFill,
+                                  final date =
+                                      formController.selectedDate.value;
+                                  return GestureDetector(
+                                    onTap: () =>
+                                        formController.pickDate(context),
+                                    child: _buildFieldContainer(
+                                      context,
+                                      textTheme,
+                                      _formatDate(date),
+                                      Icons.calendar_today,
+                                    ),
                                   );
                                 }),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(left: 26.5),
+                                child: _buildSection(
+                                  textTheme,
+                                  label: "Category",
+                                  width: itemWidth,
+                                  child: Obx(() {
+                                    return CustomDropdown(
+                                      items: formController.categories.map((
+                                        cat,
+                                      ) {
+                                        return DropdownItem(
+                                          value: cat,
+                                          label: cat,
+                                          color: Customcolors.cardSelected,
+                                          icon:
+                                              formController
+                                                  .categoryIcons[cat] ??
+                                              Icons.category,
+                                        );
+                                      }).toList(),
+                                      value:
+                                          formController
+                                              .selectedCategory
+                                              .value
+                                              .isEmpty
+                                          ? null
+                                          : formController
+                                                .selectedCategory
+                                                .value,
+                                      onChanged: (value) {
+                                        if (value != null) {
+                                          formController.selectCategory(value);
+                                        }
+                                      },
+                                      hintText: "Select category",
+                                      fillColor: Customcolors.textFieldFill,
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  _buildSection(
+                                    textTheme,
+                                    label: "Start Time",
+                                    width: double.infinity,
+                                    child: Obx(() {
+                                      final time =
+                                          formController.startTime.value;
+                                      return GestureDetector(
+                                        onTap: () => formController.pickTime(
+                                          context,
+                                          true,
+                                        ),
+                                        child: _buildFieldContainer(
+                                          context,
+                                          textTheme,
+                                          time.format(context),
+                                          Icons.access_time,
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                  const SizedBox(height: 20),
+                                  _buildSection(
+                                    textTheme,
+                                    label: "End Time",
+                                    width: double.infinity,
+                                    child: Obx(() {
+                                      final time = formController.endTime.value;
+                                      return GestureDetector(
+                                        onTap: () => formController.pickTime(
+                                          context,
+                                          false,
+                                        ),
+                                        child: _buildFieldContainer(
+                                          context,
+                                          textTheme,
+                                          time.format(context),
+                                          Icons.access_time,
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            const SizedBox(width: 20),
+
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomTextField(
+                                    controller: formController.titleController,
+                                    label: "Title",
+                                    focusedBorderColor: Customcolors.bluewidget,
+                                    validator: formController.validateTitle,
+                                  ),
+                                  const SizedBox(height: 32),
+                                  CustomTextField(
+                                    controller:
+                                        formController.descriptionController,
+                                    label: "Description",
+                                    focusedBorderColor: Customcolors.bluewidget,
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
-                      ),
+                      ],
+                    );
+                  },
+                ),
 
-                      // Time + Title + Description
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // LEFT
-                          Expanded(
-                            flex: 1,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _buildSection(
-                                  textTheme,
-                                  label: "Start Time",
-                                  width: double.infinity,
-                                  child: Obx(() {
-                                    final time =
-                                        formController.startTime.value;
-                                    return GestureDetector(
-                                      onTap: () =>
-                                          formController.pickTime(context, true),
-                                      child: _buildFieldContainer(
-                                        context,
-                                        textTheme,
-                                        time.format(context),
-                                        Icons.access_time,
-                                      ),
-                                    );
-                                  }),
-                                ),
-                                const SizedBox(height: 20),
-                                _buildSection(
-                                  textTheme,
-                                  label: "End Time",
-                                  width: double.infinity,
-                                  child: Obx(() {
-                                    final time = formController.endTime.value;
-                                    return GestureDetector(
-                                      onTap: () =>
-                                          formController.pickTime(context, false),
-                                      child: _buildFieldContainer(
-                                        context,
-                                        textTheme,
-                                        time.format(context),
-                                        Icons.access_time,
-                                      ),
-                                    );
-                                  }),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          const SizedBox(width: 20),
-
-                          // RIGHT
-                          Expanded(
-                            flex: 1,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomTextField(
-                                  controller: formController.titleController,
-                                  label: "Title",
-                                  focusedBorderColor: Customcolors.bluewidget,
-                                  validator: formController.validateTitle,
-                                ),
-                                const SizedBox(height: 32),
-                                CustomTextField(
-                                  controller:
-                                      formController.descriptionController,
-                                  label: "Description",
-                                  focusedBorderColor: Customcolors.bluewidget,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  );
-                }),
-
-                // BUTTON
                 Container(
                   padding: const EdgeInsets.only(top: 24),
                   width: double.infinity,
@@ -249,11 +261,15 @@ class EditTodoWidescreenLayout extends StatelessWidget {
                           formController.titleController.text,
                           formController.descriptionController.text,
                           formController.selectedCategory.value,
-                          newDate: _formatDate(formController.selectedDate.value),
-                          newStartTime:
-                              formController.startTime.value.format(context),
-                          newEndTime:
-                              formController.endTime.value.format(context),
+                          newDate: _formatDate(
+                            formController.selectedDate.value,
+                          ),
+                          newStartTime: formController.startTime.value.format(
+                            context,
+                          ),
+                          newEndTime: formController.endTime.value.format(
+                            context,
+                          ),
                         );
                         Get.back();
                       }
@@ -269,10 +285,12 @@ class EditTodoWidescreenLayout extends StatelessWidget {
   }
 
   // ========== HELPERS ==========
-  Widget _buildSection(TextTheme textTheme,
-      {required String label,
-      required Widget child,
-      required double width}) {
+  Widget _buildSection(
+    TextTheme textTheme, {
+    required String label,
+    required Widget child,
+    required double width,
+  }) {
     return SizedBox(
       width: width,
       child: Column(
@@ -293,7 +311,11 @@ class EditTodoWidescreenLayout extends StatelessWidget {
   }
 
   Widget _buildFieldContainer(
-      BuildContext context, TextTheme textTheme, String text, IconData icon) {
+    BuildContext context,
+    TextTheme textTheme,
+    String text,
+    IconData icon,
+  ) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(

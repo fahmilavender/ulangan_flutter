@@ -21,15 +21,21 @@ class LoginWidescreenLayout extends StatelessWidget {
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
-                  Icon(Icons.desktop_mac, color: Customcolors.bluewidget, size: 100),
-                  SizedBox(height: 16),
-                  Text(
-                    "Welcome to TodyApp",
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      color: Customcolors.bluewidget,
+                children: [
+                  const Icon(
+                    Icons.desktop_mac,
+                    color: Customcolors.bluewidget,
+                    size: 100,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 16),
+                    child: const Text(
+                      "Welcome to TodyApp",
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Customcolors.bluewidget,
+                      ),
                     ),
                   ),
                 ],
@@ -59,53 +65,68 @@ class LoginWidescreenLayout extends StatelessWidget {
                             size: 20,
                           ),
                         ),
-                        const SizedBox(width: 8),
-                        const Text(
-                          "TodyApp",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Customcolors.bluewidget,
+                        Container(
+                          margin: const EdgeInsets.only(left: 8),
+                          child: const Text(
+                            "TodyApp",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Customcolors.bluewidget,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 30),
-                    const Text(
-                      "Sign in to your\nAccount",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Customcolors.textPrimary,
+
+                    Container(
+                      margin: const EdgeInsets.only(top: 30),
+                      child: const Text(
+                        "Sign in to your\nAccount",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Customcolors.textPrimary,
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      "Enter your username and password to log in",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Customcolors.textSecondary,
+                    Container(
+                      margin: const EdgeInsets.only(top: 8),
+                      child: const Text(
+                        "Enter your username and password to log in",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Customcolors.textSecondary,
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    CustomTextField(
-                      label: "Username",
-                      controller: authController.usernameController,
-                      isPassword: false,
-                      focusedBorderColor: Customcolors.bluewidget,
-                    ),
-                    const SizedBox(height: 14),
-                    Obx(
-                      () => CustomTextField(
-                        label: "Password",
-                        controller: authController.passwordController,
-                        isPassword: authController.isPasswordHidden.value,
-                        showToggle: true,
-                        onToggle: authController.togglePasswordVisibility,
+
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: CustomTextField(
+                        label: "Username",
+                        controller: authController.usernameController,
+                        isPassword: false,
                         focusedBorderColor: Customcolors.bluewidget,
                       ),
                     ),
-                    Align(
+
+                    Container(
+                      margin: const EdgeInsets.only(top: 14),
+                      child: Obx(
+                        () => CustomTextField(
+                          label: "Password",
+                          controller: authController.passwordController,
+                          isPassword: authController.isPasswordHidden.value,
+                          showToggle: true,
+                          onToggle: authController.togglePasswordVisibility,
+                          focusedBorderColor: Customcolors.bluewidget,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      margin: const EdgeInsets.only(top: 4),
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {},
@@ -115,14 +136,17 @@ class LoginWidescreenLayout extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 14),
-                    Obx(
-                      () => CustomButton(
-                        myText: "Log In",
-                        isLoading: authController.isLoading.value,
-                        onPressed: authController.login,
-                        myTextColor: Customcolors.white,
-                        backgroundColor: Customcolors.bluewidget,
+
+                    Container(
+                      margin: const EdgeInsets.only(top: 14),
+                      child: Obx(
+                        () => CustomButton(
+                          myText: "Log In",
+                          isLoading: authController.isLoading.value,
+                          onPressed: authController.login,
+                          myTextColor: Customcolors.white,
+                          backgroundColor: Customcolors.bluewidget,
+                        ),
                       ),
                     ),
                   ],
